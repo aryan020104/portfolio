@@ -9,10 +9,10 @@ import {
   GitCommit, 
   Award, 
   BookOpen, 
-  Sparkles,
+  Languages as LanguagesIcon,
   CheckCircle2
 } from "lucide-react";
-import { PERSONAL_INFO } from "@/constants/portfolioData";
+import { PERSONAL_INFO, LANGUAGES } from "@/constants/portfolioData";
 
 function StatCounter({ value, label, icon: Icon }: { value: string; label: string; icon: React.ElementType }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -69,7 +69,7 @@ function StatCounter({ value, label, icon: Icon }: { value: string; label: strin
 }
 
 export default function About() {
-  const [activeTab, setActiveTab] = useState<"story" | "philosophy" | "academic">("story");
+  const [activeTab, setActiveTab] = useState<"story" | "languages" | "academic">("story");
 
   return (
     <section id="about" className="py-28 px-6 md:px-12 max-w-7xl mx-auto relative">
@@ -77,10 +77,10 @@ export default function About() {
       <div className="space-y-4 mb-16 text-center md:text-left">
         <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-mono tracking-wider uppercase">
           <User className="w-3.5 h-3.5" />
-          <span>About Aryan</span>
+          <span>About {PERSONAL_INFO.shortName}</span>
         </div>
         <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-white">
-          Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">Scalability</span> & Elegance.
+          Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">Precision</span> & Leadership.
         </h2>
       </div>
 
@@ -95,7 +95,6 @@ export default function About() {
           className="lg:col-span-5 relative"
         >
           <div className="h-full rounded-3xl bg-[#111111] border border-white/10 p-8 flex flex-col justify-between relative overflow-hidden shadow-2xl group">
-            {/* Background Ambient Glow */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl pointer-events-none group-hover:bg-accent/20 transition-all duration-500" />
 
             {/* Profile Banner Graphic */}
@@ -105,29 +104,29 @@ export default function About() {
                   A.
                 </div>
                 <div className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[10px] font-mono uppercase">
-                  Available for Hire
+                  TH Aschaffenburg
                 </div>
               </div>
 
               {/* Code Snippet Card */}
               <div className="bg-[#050505]/90 p-4 rounded-xl border border-white/10 font-mono text-xs text-muted space-y-1 shadow-lg">
-                <p className="text-accent">class <span className="text-white font-semibold">SoftwareEngineer</span> {"{"}</p>
-                <p className="pl-4">String name = <span className="text-emerald-400">&quot;Aryan&quot;</span>;</p>
-                <p className="pl-4">String location = <span className="text-emerald-400">&quot;Germany&quot;</span>;</p>
-                <p className="pl-4">String focus = <span className="text-secondary">&quot;Java + Next.js&quot;</span>;</p>
+                <p className="text-accent">class <span className="text-white font-semibold">AryanSorathiya</span> {"{"}</p>
+                <p className="pl-4">String degree = <span className="text-emerald-400">&quot;Software Design B.Sc.&quot;</span>;</p>
+                <p className="pl-4">String location = <span className="text-emerald-400">&quot;Aschaffenburg, Germany&quot;</span>;</p>
+                <p className="pl-4">String core = <span className="text-secondary">&quot;Java, DevSecOps, C++&quot;</span>;</p>
                 <p>{"}"}</p>
               </div>
             </div>
 
             {/* Quick Highlights list */}
             <div className="mt-8 space-y-3">
-              <h3 className="text-lg font-bold text-white font-display">Core Pillars</h3>
+              <h3 className="text-lg font-bold text-white font-display">Core Competencies</h3>
               <div className="space-y-2">
                 {[
-                  "Algorithmic precision in Java & C++",
-                  "Event-driven backend architectures",
-                  "Pixel-perfect React & Next.js UI systems",
-                  "Bilingual: English (Fluent) & German"
+                  "Drone network optimization & graph algorithms",
+                  "Automated DevSecOps & GitLab CI/CD pipelines",
+                  "Object-Oriented Software Engineering (OOP) in Java & C++",
+                  "Multilingual: German (B2 Goethe), English (C1 IELTS), Gujarati"
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center space-x-3 text-sm text-muted">
                     <CheckCircle2 className="w-4 h-4 text-accent shrink-0" />
@@ -156,8 +155,8 @@ export default function About() {
           {/* Tabs Navigation */}
           <div className="flex items-center space-x-2 p-1.5 rounded-2xl bg-[#111111] border border-white/10 max-w-fit">
             {[
-              { id: "story", label: "My Story", icon: BookOpen },
-              { id: "philosophy", label: "Architecture", icon: Cpu },
+              { id: "story", label: "Profile", icon: BookOpen },
+              { id: "languages", label: "Languages", icon: LanguagesIcon },
               { id: "academic", label: "Academics", icon: Award },
             ].map((tab) => {
               const Icon = tab.icon;
@@ -190,34 +189,37 @@ export default function About() {
             {activeTab === "story" && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
                 <h3 className="text-xl font-bold font-display text-white">
-                  Passionate about engineering systems that solve real problems.
+                  Focused, Composed, & Driven by Practical Knowledge.
                 </h3>
-                <p className="text-muted leading-relaxed text-sm md:text-base">
-                  I am a Software Engineering student based in Aschaffenburg, Germany. My technical journey began with deep curiosity for how large-scale computer networks process data. Over the past 3+ years, I have specialized in building robust backend systems in Java (Spring Boot) and highly interactive modern frontends using Next.js.
+                <p className="text-muted leading-relaxed text-sm md:text-base italic border-l-2 border-accent pl-4 py-1">
+                  &quot;{PERSONAL_INFO.bio}&quot;
                 </p>
                 <p className="text-muted leading-relaxed text-sm md:text-base">
-                  Whether I am optimizing graph traversal routes for autonomous drones or tuning 60FPS WebGL animations, I bring meticulous discipline and clean architecture principles to every project.
+                  I am a Software Design student at Technische Hochschule Aschaffenburg, Germany. I specialize in Java system development, drone routing algorithm optimization, DevSecOps pipelines, and modern interactive applications.
                 </p>
               </motion.div>
             )}
 
-            {activeTab === "philosophy" && (
+            {activeTab === "languages" && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
                 <h3 className="text-xl font-bold font-display text-white">
-                  Clean Architecture, High Concurrency, & Zero Compromise.
+                  Language Proficiency (Sprachkenntnisse)
                 </h3>
-                <p className="text-muted leading-relaxed text-sm md:text-base">
-                  My design philosophy revolves around modular microservices, strict domain-driven design, and non-blocking asynchronous event pipelines. I believe that speed and aesthetic beauty should coexist without sacrificing maintainability.
-                </p>
-                <div className="grid grid-cols-2 gap-4 pt-2 font-mono text-xs">
-                  <div className="p-3 rounded-xl bg-white/5 border border-white/5">
-                    <span className="text-accent font-bold">01. DRY & SOLID</span>
-                    <p className="text-muted mt-1">Strict object-oriented & functional standards</p>
-                  </div>
-                  <div className="p-3 rounded-xl bg-white/5 border border-white/5">
-                    <span className="text-secondary font-bold">02. PERFORMANCE</span>
-                    <p className="text-muted mt-1">Sub-100ms API endpoints & optimized bundle sizes</p>
-                  </div>
+                <div className="space-y-4 pt-2">
+                  {LANGUAGES.map((lang) => (
+                    <div key={lang.name} className="space-y-1.5">
+                      <div className="flex justify-between text-xs font-mono">
+                        <span className="text-white font-bold">{lang.name}</span>
+                        <span className="text-accent font-semibold">{lang.level}</span>
+                      </div>
+                      <div className="h-2 w-full bg-white/5 rounded-full overflow-hidden p-0.5">
+                        <div
+                          className="h-full rounded-full bg-gradient-to-r from-accent to-secondary"
+                          style={{ width: `${lang.proficiency}%` }}
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             )}
@@ -225,13 +227,13 @@ export default function About() {
             {activeTab === "academic" && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
                 <h3 className="text-xl font-bold font-display text-white">
-                  Technische Hochschule Aschaffenburg
+                  Software Design B.Sc. — TH Aschaffenburg
                 </h3>
                 <p className="text-muted leading-relaxed text-sm md:text-base">
-                  Pursuing B.Sc. in Software Engineering in Germany. Recognized for academic excellence in Advanced Algorithms, Distributed Databases, and Concurrent Systems.
+                  Pursuing Software Design B.Sc. in Aschaffenburg, Germany (Specialization: Informatik / Softwareentwicklung). Formerly studied Computer Engineering B.Tech. at Marwadi University, India.
                 </p>
                 <div className="flex flex-wrap gap-2 pt-2">
-                  {["Software Architecture", "Graph Theory", "Operating Systems", "Cloud Computing", "Java Enterprise"].map((course, i) => (
+                  {["Software Design", "Informatik", "Drone Routing", "DevSecOps", "JavaFX", "Figma HCI"].map((course, i) => (
                     <span key={i} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-muted">
                       {course}
                     </span>
@@ -244,8 +246,8 @@ export default function About() {
           {/* Stats Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <StatCounter value={PERSONAL_INFO.yearsExperience} label="Years Exp" icon={Code} />
-            <StatCounter value={PERSONAL_INFO.projectsCompleted} label="Projects" icon={Sparkles} />
-            <StatCounter value={PERSONAL_INFO.technologiesMastered} label="Technologies" icon={Cpu} />
+            <StatCounter value={PERSONAL_INFO.projectsCompleted} label="CV Projects" icon={Cpu} />
+            <StatCounter value={PERSONAL_INFO.technologiesMastered} label="Technologies" icon={Award} />
             <StatCounter value={PERSONAL_INFO.githubContributions} label="GitHub Commits" icon={GitCommit} />
           </div>
         </motion.div>

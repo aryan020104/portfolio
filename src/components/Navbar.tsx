@@ -33,7 +33,6 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      // Section Intersection logic
       const sections = NAV_LINKS.map(link => link.href.substring(1));
       const scrollPos = window.scrollY + 200;
 
@@ -57,14 +56,13 @@ export default function Navbar() {
   const toggleSound = () => {
     setSoundEnabled(!soundEnabled);
     if (!soundEnabled) {
-      // Play a soft synthetic chime sound via Web Audio API
       try {
         const ctx = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)();
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
         osc.type = "sine";
-        osc.frequency.setValueAtTime(587.33, ctx.currentTime); // D5
-        osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.3); // A5
+        osc.frequency.setValueAtTime(587.33, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(880, ctx.currentTime + 0.3);
         gain.gain.setValueAtTime(0.08, ctx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.3);
         osc.connect(gain);
@@ -102,10 +100,10 @@ export default function Navbar() {
           </div>
           <div className="flex flex-col">
             <span className="leading-none text-white group-hover:text-accent transition-colors font-bold">
-              {PERSONAL_INFO.name}
+              {PERSONAL_INFO.shortName}
             </span>
             <span className="text-[10px] font-mono text-muted tracking-wider uppercase mt-1">
-              Software Engineer
+              Software Design B.Sc.
             </span>
           </div>
         </a>
@@ -140,7 +138,6 @@ export default function Navbar() {
 
         {/* Right CTA & Controls */}
         <div className="hidden lg:flex items-center space-x-3">
-          {/* Audio Ambient Button */}
           <button
             onClick={toggleSound}
             className="p-2.5 rounded-xl bg-[#111111] border border-white/10 text-muted hover:text-white hover:border-white/25 transition-all"
@@ -154,7 +151,6 @@ export default function Navbar() {
             )}
           </button>
 
-          {/* Theme Icon (Dark Mode Only indicator) */}
           <div
             className="p-2.5 rounded-xl bg-[#111111] border border-white/10 text-accent/80 cursor-default opacity-80"
             title="Dark Mode Locked"
@@ -162,7 +158,6 @@ export default function Navbar() {
             <Moon className="w-4 h-4" />
           </div>
 
-          {/* Resume CTA Button */}
           <a
             href="/resume.pdf"
             target="_blank"
@@ -172,7 +167,7 @@ export default function Navbar() {
           >
             <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
             <FileText className="w-4 h-4" />
-            <span>Resume</span>
+            <span>CV / Resume</span>
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         </div>
@@ -225,7 +220,7 @@ export default function Navbar() {
                   className="w-full py-3 rounded-2xl bg-gradient-to-r from-accent to-secondary text-center text-white text-sm font-semibold flex items-center justify-center space-x-2 shadow-lg"
                 >
                   <FileText className="w-4 h-4" />
-                  <span>Download Resume</span>
+                  <span>Download CV</span>
                 </a>
               </div>
             </div>

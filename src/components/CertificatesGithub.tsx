@@ -4,13 +4,11 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { 
   Award, 
-  ExternalLink, 
   CheckCircle2, 
   GitBranch, 
   Star, 
   GitCommit, 
   Github,
-  Sparkles,
   ChevronLeft,
   ChevronRight
 } from "lucide-react";
@@ -27,10 +25,9 @@ export default function CertificatesGithub() {
     setCertIndex((prev) => (prev - 1 + CERTIFICATES.length) % CERTIFICATES.length);
   };
 
-  // Generate 52 columns x 7 rows mock contribution grid cells
+  // Generate contribution grid
   const contributionGrid = Array.from({ length: 364 }, (_, i) => {
-    // Generate organic activity levels
-    const level = (i * 13 + (i % 7) * 23) % 5;
+    const level = (i * 11 + (i % 7) * 19) % 5;
     return level;
   });
 
@@ -52,10 +49,10 @@ export default function CertificatesGithub() {
           <div className="space-y-4">
             <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-mono tracking-wider uppercase">
               <Award className="w-3.5 h-3.5" />
-              <span>Industry Certifications</span>
+              <span>Certificates & Examinations</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-white">
-              Verified <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">Credentials</span>.
+              Zertifikate & <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">Tests</span>.
             </h2>
           </div>
 
@@ -122,17 +119,8 @@ export default function CertificatesGithub() {
                   </div>
 
                   <div className="flex items-center justify-between text-xs font-mono">
-                    <span className="text-muted">Issued {cert.date}</span>
-                    <a
-                      href={cert.credentialUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-accent hover:underline flex items-center space-x-1 font-semibold"
-                      data-cursor-text="VERIFY"
-                    >
-                      <span>Verify</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
+                    <span className="text-muted">Datum: {cert.date}</span>
+                    <span className="text-accent font-semibold">Bestanden</span>
                   </div>
                 </div>
               </motion.div>
@@ -146,7 +134,7 @@ export default function CertificatesGithub() {
         <div className="space-y-4 text-center md:text-left">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-mono tracking-wider uppercase">
             <Github className="w-3.5 h-3.5" />
-            <span>Open Source & Activity</span>
+            <span>Open Source & Repositories</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-white">
             GitHub <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-accent">Contributions</span>.
@@ -159,11 +147,11 @@ export default function CertificatesGithub() {
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
                 <GitCommit className="w-4 h-4 text-emerald-400" />
-                <span className="text-white font-bold">{GITHUB_STATS.totalCommits}+ Commits</span> in 2026
+                <span className="text-white font-bold">{GITHUB_STATS.totalCommits}+ Commits</span>
               </div>
               <div className="flex items-center space-x-2">
                 <GitBranch className="w-4 h-4 text-accent" />
-                <span className="text-white font-bold">{GITHUB_STATS.pullRequests}</span> PRs Merged
+                <span className="text-white font-bold">{GITHUB_STATS.pullRequests}</span> PRs
               </div>
             </div>
 
@@ -185,7 +173,7 @@ export default function CertificatesGithub() {
                 <div
                   key={i}
                   className={`w-3 h-3 rounded-sm border transition-transform hover:scale-125 ${getCellColor(level)}`}
-                  title={`Day ${i + 1}: ${level * 4} contributions`}
+                  title={`Day ${i + 1}: ${level * 3} contributions`}
                 />
               ))}
             </div>
@@ -194,9 +182,12 @@ export default function CertificatesGithub() {
           {/* Featured Repositories Grid */}
           <div className="pt-6 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             {GITHUB_STATS.repositories.map((repo) => (
-              <div
+              <a
                 key={repo.name}
-                className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-accent/40 transition-colors space-y-3"
+                href={`https://github.com/aryan020104/${repo.name}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-4 rounded-2xl bg-white/5 border border-white/5 hover:border-accent/40 transition-colors space-y-3 block"
               >
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono font-bold text-white truncate">{repo.name}</span>
@@ -207,7 +198,7 @@ export default function CertificatesGithub() {
                 </div>
                 <p className="text-[11px] text-muted line-clamp-1">{repo.desc}</p>
                 <div className="text-[10px] font-mono text-accent">{repo.language}</div>
-              </div>
+              </a>
             ))}
           </div>
         </div>

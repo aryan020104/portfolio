@@ -14,7 +14,6 @@ import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import ExperienceEducation from "@/components/ExperienceEducation";
 import CertificatesGithub from "@/components/CertificatesGithub";
-import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -44,7 +43,6 @@ export default function Home() {
         <Projects />
         <ExperienceEducation />
         <CertificatesGithub />
-        <Testimonials />
         <Contact />
         <Footer />
       </div>
