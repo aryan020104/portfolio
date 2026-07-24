@@ -1,0 +1,22 @@
+{
+  "..\\node_modules\\next\\dist\\client\\index.js -> ../pages/_app": {
+    "id": 5203,
+    "files": [
+      "static/chunks/203.2b4c1ee4fbe3a7cf.js"
+    ]
+  },
+  "..\\node_modules\\next\\dist\\client\\index.js -> ../pages/_error": {
+    "id": 6218,
+    "files": [
+      "static/chunks/218.57a830a2c55ba802.js"
+    ]
+  },
+  "components\\Hero.tsx -> ./Hero3D": {
+    "id": 8602,
+    "files": [
+      "static/chunks/b536a0f1.95e1991a18cf9ec9.js",
+      "static/chunks/bd904a5c.76682fe5e1c1cc3a.js",
+      "static/chunks/602.dea21ce99ea4eafd.js"
+    ]
+  }
+}
