@@ -133,9 +133,9 @@ export default function ExperienceEducation() {
                 <span>Specialization Areas</span>
               </h4>
               <div className="space-y-2 text-xs text-muted">
-                <p>• Informatik & Softwareentwicklung</p>
-                <p>• Object-Oriented Software Design (Java & C++)</p>
-                <p>• Drone Network Routing & DevSecOps Pipelines</p>
+                <p>• Software Design International (EQR-Niveau 6)</p>
+                <p>• Java Backend Architecture (Spring Boot & MySQL)</p>
+                <p>• Drohnennetzwerk-Optimierung & DevSecOps Pipelines</p>
               </div>
             </div>
           </div>

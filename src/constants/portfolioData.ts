@@ -3,233 +3,198 @@ import { Project, SkillCategory, ExperienceItem, CertificateItem } from '@/types
 export const PERSONAL_INFO = {
   name: "Aryan Kishor Sorathiya",
   shortName: "Aryan",
-  title: "Software Engineering Student & Full Stack Developer",
-  tagline: "Specializing in Java system architecture, network algorithms, DevSecOps pipelines, and modern web application development.",
-  bio: "Ich bin eine kontrollierte und ruhige Person mit Freude am Erwerb praktischen Wissens. Ich nehme Aufgaben sehr ernst, übernehme gerne Verantwortung und habe die Fähigkeit, Gruppen zu führen. Ich bin stets bereit, aus Fehlern zu lernen und mich weiterzuentwickeln.",
+  title: "Software Design Student & Java Backend Developer",
+  tagline: "Specializing in Java backend architecture, Spring Boot, MySQL databases, DevSecOps CI/CD pipelines, and desktop GUI applications.",
+  bio: "Ich bin eine sehr kontrollierte und ruhige Person. Ich mag es, mir praktisches Wissen anzueignen. Sehr ernst bei der Ausführung von Aufgaben. Außerdem gefällt mir übernehme gerne Verantwortung und habe die Fähigkeit, eine Gruppe von Menschen zu führen. Ich bin immer bereit, Fehler zu akzeptieren und zu lernen von ihnen.",
   location: "Schoberstr. 4, 63743 Aschaffenburg, Germany",
-  university: "Technische Hochschule Aschaffenburg",
-  degree: "B.Sc. Software Design",
+  university: "Technischen Hochschule Aschaffenburg",
+  degree: "Software Design International",
   email: "aryansorathiya0201@gmail.com",
-  phone: "+49 15566050468",
+  phone: "(+49) 15566050468",
   github: "https://github.com/aryan020104",
   linkedin: "https://linkedin.com",
   twitter: "https://x.com",
-  availability: "Open for Working Student / Full-Time Roles & Contracts",
-  yearsExperience: "3+",
-  projectsCompleted: "11+",
-  technologiesMastered: "12+",
-  githubContributions: "850+",
+  availability: "Offen für Werksstudentenstellen & Software-Projekte",
+  yearsExperience: "2+",
+  projectsCompleted: "7+",
+  technologiesMastered: "10+",
+  githubContributions: "500+",
   dateOfBirth: "02.01.2004",
-  nationality: "Indian"
+  placeOfBirth: "Rajkot, Gujarat, Indien",
+  nationality: "Indisch"
 };
 
 export const HERO_ROLES = [
   "Software Design Student",
-  "Java & C++ Developer",
-  "DevSecOps & Cloud Specialist",
+  "Java & Spring Boot Developer",
+  "DevSecOps & CI/CD Pipeline Specialist",
   "Problem Solver"
 ];
 
 export const FLOATING_BADGES = [
   { name: "Java", color: "#F89820", bg: "rgba(248, 152, 32, 0.15)" },
-  { name: "C / C++", color: "#659AD2", bg: "rgba(101, 154, 210, 0.15)" },
+  { name: "Spring Boot", color: "#6DB33F", bg: "rgba(109, 179, 63, 0.15)" },
+  { name: "MySQL", color: "#00758F", bg: "rgba(0, 117, 143, 0.15)" },
   { name: "Docker", color: "#2496ED", bg: "rgba(36, 150, 237, 0.15)" },
   { name: "GitLab CI/CD", color: "#FC6D26", bg: "rgba(252, 109, 38, 0.15)" },
   { name: "JavaFX", color: "#E76F00", bg: "rgba(231, 111, 0, 0.15)" },
-  { name: "OWASP", color: "#10B981", bg: "rgba(16, 185, 129, 0.15)" },
   { name: "Figma", color: "#F24E1E", bg: "rgba(242, 78, 30, 0.15)" },
-  { name: "Godot", color: "#478CBF", bg: "rgba(71, 140, 191, 0.15)" },
+  { name: "Godot Engine", color: "#478CBF", bg: "rgba(71, 140, 191, 0.15)" },
 ];
 
 export const PROJECTS: Project[] = [
   {
-    id: "drone-net-optimizer",
-    title: "DroneNetOptimizer",
-    subtitle: "Graph Routing & Drone Network Optimization",
+    id: "internflow-praktikumsverwaltungssystem",
+    title: "InternFlow – Praktikumsverwaltungssystem",
+    subtitle: "REST-API | SpringBoot | MySQL",
     category: "Java & Backend",
-    description: "Java-based autonomous drone network optimization engine implementing graph routing, node connectivity, and OOP architecture.",
-    longDescription: "Developed an algorithm-driven simulation for drone network optimization in Java. Focuses on spatial graph partitioning, dynamic node routing, battery efficiency modeling, and robust Object-Oriented Software Design.",
-    image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?q=80&w=1200&auto=format&fit=crop",
-    githubUrl: "https://github.com/aryan020104",
-    tags: ["Java", "OOP", "Graph Algorithms", "Network Communication", "Routing"],
+    description: "Entwicklung einer REST-API zur Verwaltung von Benutzern und Praktikumsbewerbungen mit Java, Spring Boot, Spring Data JPA und MySQL.",
+    longDescription: "Entwicklung einer mehrschichtigen Backend-Architektur zur Verwaltung von Benutzern und Praktikumsbewerbungen. Implementierung einer relationalen Datenbankstruktur mit Hibernate/JPA sowie einer One-to-Many-Beziehung zwischen Benutzern und Praktikumsbewerbungen. Integration einer sicheren Benutzerauthentifizierung mit Spring Security, JWT und BCrypt.",
+    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200&auto=format&fit=crop",
+    githubUrl: "https://github.com/aryan020104/InternFlow",
+    tags: ["Java", "Spring Boot", "MySQL", "REST-API", "Spring Security", "JWT", "Hibernate/JPA", "BCrypt"],
     featured: true,
     architectureHighlights: [
-      "Optimized graph routing algorithms for multi-node drone delivery networks",
-      "Robust Object-Oriented Architecture with clean modular code structure",
-      "Network packet routing & simulated signal connectivity logic"
+      "Entwicklung einer REST-API zur Verwaltung von Benutzern und Praktikumsbewerbungen mit Java, Spring Boot, Spring Data JPA und MySQL",
+      "Implementierung einer relationalen Datenbankstruktur mit Hibernate/JPA sowie einer One-to-Many-Beziehung zwischen Benutzern und Praktikumsbewerbungen",
+      "Integration einer sicheren Benutzerauthentifizierung mit Spring Security, JWT und BCrypt sowie Entwicklung einer mehrschichtigen Backend-Architektur"
     ],
-    metrics: "High-precision routing simulation under variable network load"
+    metrics: "Production-grade REST architecture with Spring Security & JWT"
   },
   {
-    id: "owasp-juice-shop-devsecops",
-    title: "OWASP Juice Shop DevSecOps",
-    subtitle: "Automated Security & CI/CD Security Pipeline",
-    category: "Security & Systems",
-    description: "Automated DevSecOps pipeline for OWASP Juice Shop featuring static/dynamic vulnerability scanning with Docker and GitLab CI/CD.",
-    longDescription: "Architected a complete DevSecOps security pipeline for OWASP Juice Shop application. Integrated automated vulnerability scanners, SAST/DAST analysis, container security audits, and OWASP Top 10 vulnerability remediation in GitLab CI/CD.",
-    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
-    githubUrl: "https://github.com/aryan020104",
-    tags: ["Docker", "GitLab CI/CD", "OWASP Top 10", "DevSecOps", "Security Auditing"],
+    id: "drone-net-optimizer",
+    title: "DroneNetOptimizer",
+    subtitle: "GraphAlgorithmen | Datenstrukturen | OOP | Maven | Java",
+    category: "Java & Backend",
+    description: "Entwicklung eines Java-basierten Projekts zur Optimierung von Drohnennetzwerken.",
+    longDescription: "Java-basiertes Projekt zur Optimierung autonomer Drohnennetzwerke. Arbeit an Konzepten wie Netzwerkkommunikation, Routing und Konnektivität. Anwendung objektorientierter Programmierung (OOP) in Java und Verwaltung des Build-Prozesses mit Maven.",
+    image: "https://images.unsplash.com/photo-1527977966376-1c8408f9f108?q=80&w=1200&auto=format&fit=crop",
+    githubUrl: "https://github.com/aryan020104/DroneNetOptimizer",
+    tags: ["Java", "GraphAlgorithmen", "Datenstrukturen", "OOP", "Maven", "Routing"],
     featured: true,
     architectureHighlights: [
-      "Automated CI/CD security scanning pipeline built with GitLab CI",
-      "Container vulnerability assessment and image minimization with Docker",
-      "Comprehensive analysis and defense strategies for OWASP Top 10 risks"
-    ],
-    metrics: "100% automated security scan coverage on code push"
+      "Entwicklung eines Java-basierten Projekts zur Optimierung von Drohnennetzwerken",
+      "Arbeit an Konzepten wie Netzwerkkommunikation, Routing und Konnektivität",
+      "Anwendung objektorientierter Programmierung (OOP) in Java mit Maven Build management"
+    ]
   },
   {
     id: "drone-delivery-network",
     title: "DroneDeliveryNetwork",
-    subtitle: "Autonomous Drone Flight & Node Coordination",
+    subtitle: "Netzwerkkonzepte | Maven | OOP | Java",
     category: "Java & Backend",
-    description: "Java drone delivery network simulation engine facilitating real-time inter-node communication and spatial delivery coordination.",
-    longDescription: "Engineered a simulation framework for drone-based logistics networks. Features real-time coordination between flight nodes, delivery queue management, and network state monitoring.",
+    description: "Entwicklung eines Projekts für drohnenbasierte Liefernetzwerke.",
+    longDescription: "Entwicklung eines Projekts für drohnenbasierte Liefernetzwerke. Fokus auf Kommunikation und Koordination zwischen Netzwerkknoten sowie Umsetzung grundlegender Netzwerk- und Simulationskonzepte in Java.",
     image: "https://images.unsplash.com/photo-1508614589041-895b88991e3e?q=80&w=1200&auto=format&fit=crop",
-    githubUrl: "https://github.com/aryan020104",
-    tags: ["Java", "Simulation", "Network Nodes", "Distributed Logic"],
+    githubUrl: "https://github.com/aryan020104/DroneDeliveryNetwork",
+    tags: ["Java", "Netzwerkkonzepte", "Maven", "OOP", "Simulation"],
     featured: true,
     architectureHighlights: [
-      "Real-time coordination protocol for autonomous delivery nodes",
-      "Event-driven simulation loop for dynamic delivery scheduling",
-      "Extensible OOP node architecture for scalable fleet expansion"
-    ]
-  },
-  {
-    id: "hci-dashboard-design",
-    title: "HCI Dashboard Design",
-    subtitle: "Human-Computer Interaction & Figma Prototype",
-    category: "UI/UX & WebGL",
-    description: "Interactive UX dashboard prototype created in Figma adhering strictly to Human-Computer Interaction (HCI) usability principles.",
-    longDescription: "Designed an intuitive enterprise analytics dashboard prototype. Applied cognitive load reduction techniques, ergonomic visual hierarchy, dark mode accessibility, and interactive design systems in Figma.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
-    demoUrl: "https://figma.com",
-    githubUrl: "https://github.com/aryan020104",
-    tags: ["Figma", "HCI Principles", "UI/UX Design", "Wireframing", "Prototyping"],
-    featured: true,
-    architectureHighlights: [
-      "Usability-centric design system based on standard HCI guidelines",
-      "Interactive high-fidelity Figma components with micro-interactions",
-      "Structured layout grids tuned for complex data visualization"
-    ]
-  },
-  {
-    id: "vulnerability-monitoring-dashboard",
-    title: "Vulnerability Monitoring Dashboard",
-    subtitle: "Security Analytics & Status Indicator Platform",
-    category: "Security & Systems",
-    description: "Interactive security dashboard for visual tracking of CVE vulnerabilities, system alert indicators, and live security telemetry.",
-    longDescription: "Developed a security analytics visualizer prototype focusing on usability and swift threat detection. Displays threat level badges, real-time alert logs, and system vulnerability statistics.",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=1200&auto=format&fit=crop",
-    githubUrl: "https://github.com/aryan020104",
-    tags: ["UI/UX & HCI", "Security", "Dashboard", "Threat Visualization"],
-    featured: false,
-    architectureHighlights: [
-      "Status indicators for real-time security alert classification",
-      "HCI-focused dark theme tailored for SOC analyst workflows",
-      "Aggregated vulnerability metrics and exportable security reports"
+      "Entwicklung eines Projekts für drohnenbasierte Liefernetzwerke",
+      "Fokus auf Kommunikation und Koordination zwischen Netzwerkknoten",
+      "Umsetzung grundlegender Netzwerk- und Simulationskonzepte"
     ]
   },
   {
     id: "budgeting-app",
-    title: "Budgeting App",
-    subtitle: "Desktop Personal Financial Manager",
+    title: "Budgetting App",
+    subtitle: "Java & JavaFX Desktop Application",
     category: "Java & Backend",
-    description: "Cross-platform desktop application built with Java & JavaFX for personal income, expense tracking, and financial analytics.",
-    longDescription: "Desktop finance manager featuring custom GUI components built in JavaFX. Provides graphical expense visualization, budget categorizations, and encrypted local transaction storage.",
+    description: "Entwicklung einer Desktop-Anwendung zur Verwaltung persönlicher Finanzen mit JavaFX.",
+    longDescription: "Entwicklung einer Desktop-Anwendung zur Verwaltung persönlicher Finanzen. Implementierung von Budget- und Ausgabenverwaltung mit grafischer Benutzeroberfläche und Gestaltung der Benutzeroberfläche mit JavaFX.",
     image: "https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=1200&auto=format&fit=crop",
-    githubUrl: "https://github.com/aryan020104",
-    tags: ["Java", "JavaFX", "Desktop GUI", "Financial Management"],
-    featured: false,
+    githubUrl: "https://github.com/aryan020104/Budgetting-App",
+    tags: ["Java", "JavaFX", "Desktop GUI", "Finanzverwaltung"],
+    featured: true,
     architectureHighlights: [
-      "Custom JavaFX dark mode user interface with responsive layouts",
-      "Modular MVC code architecture separating GUI from core logic",
-      "Local persistence for secure expenditure records"
-    ]
-  },
-  {
-    id: "ipad-pro-website",
-    title: "iPad Pro Website Clone",
-    subtitle: "Modern Product Landing Page",
-    category: "UI/UX & WebGL",
-    description: "Responsive showcase landing page cloning Apple's iPad Pro website design using HTML5, CSS3, and modern layout techniques.",
-    longDescription: "Pixel-perfect web landing page implementing sleek typography, fluid CSS grid layouts, smooth hover transitions, and responsive mobile breakpoints.",
-    image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=1200&auto=format&fit=crop",
-    demoUrl: "https://demo.example.com",
-    githubUrl: "https://github.com/aryan020104",
-    tags: ["HTML5", "CSS3", "Responsive Design", "UI Styling"],
-    featured: false,
-    architectureHighlights: [
-      "Modern CSS Flexbox & Grid responsive layout system",
-      "Clean CSS keyframe micro-animations and image zoom effects",
-      "Cross-browser performance optimization"
+      "Entwicklung einer Desktop-Anwendung zur Verwaltung persönlicher Finanzen",
+      "Implementierung von Budget- und Ausgabenverwaltung mit grafischer Benutzeroberfläche",
+      "Gestaltung der Benutzeroberfläche mit JavaFX"
     ]
   },
   {
     id: "flappy-learn",
     title: "Flappy-Learn",
-    subtitle: "Interactive Educational Game for Children",
+    subtitle: "Interactive Game with Godot Engine",
     category: "Full Stack",
-    description: "Interactive educational game built in Godot Engine for children featuring gamified mathematics and language learning mechanics.",
-    longDescription: "Designed an engaging 2D learning game in Godot Engine. Combines Flappy-style mechanics with interactive quiz challenges to help children improve math and language skills.",
+    description: "Entwicklung eines Lernspiels für Kinder mit Fokus auf Mathematik und Sprachlernen.",
+    longDescription: "Entwicklung eines Lernspiels für Kinder in der Godot Engine. Fokus auf Mathematik und Sprachlernen durch Umsetzung interaktiver Spielmechaniken und Lernfunktionen.",
     image: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=1200&auto=format&fit=crop",
-    githubUrl: "https://github.com/aryan020104",
-    tags: ["Godot Engine", "Game Dev", "Interactive UI", "EdTech"],
+    githubUrl: "https://github.com/aryan020104/Flappy-Learn",
+    tags: ["Godot Engine", "Game Dev", "Mathematik", "Sprachlernen", "Interactive UI"],
     featured: false,
     architectureHighlights: [
-      "Custom 2D physics and collision detection script in Godot",
-      "Gamified reward loops and interactive question generators",
-      "Child-friendly UI design and audio feedback loops"
+      "Entwicklung eines Lernspiels für Kinder mit Fokus auf Mathematik und Sprachlernen",
+      "Umsetzung von Spielmechaniken und interaktiven Lernfunktionen",
+      "Arbeit mit der Godot Engine"
     ]
   },
   {
-    id: "todo-list-cicd",
-    title: "Todo List CI/CD",
-    subtitle: "Automated Build & Deployment Pipeline",
+    id: "owasp-juice-shop-devsecops",
+    title: "OWASP Juice Shop DevSecOps Project",
+    subtitle: "Gitlab | CI/CD | Docker Security",
     category: "Security & Systems",
-    description: "Task management web application with fully automated GitLab CI/CD build, test, and container deployment workflow using Docker.",
-    longDescription: "Implemented an automated pipeline for a task management application. Features automated unit test execution, Docker image building, and automated deployment stages in GitLab.",
-    image: "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1200&auto=format&fit=crop",
-    githubUrl: "https://github.com/aryan020104",
-    tags: ["GitLab CI/CD", "Docker", "DevOps", "Automation"],
-    featured: false,
+    description: "Implementierung einer CI/CD-Pipeline für die OWASP Juice Shop Anwendung.",
+    longDescription: "Implementierung einer CI/CD-Pipeline für die OWASP Juice Shop Anwendung. Analyse von OWASP Top 10 Sicherheitslücken und sicheren Deployment-Konzepten sowie Nutzung von Docker und GitLab CI/CD zur Automatisierung.",
+    image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1200&auto=format&fit=crop",
+    githubUrl: "https://github.com/aryan020104/OWASP-Juice-Shop-DevSecOps",
+    tags: ["GitLab CI/CD", "Docker", "DevSecOps", "OWASP Top 10", "Automatisierung"],
+    featured: true,
     architectureHighlights: [
-      "Multi-stage GitLab CI/CD pipeline configuration",
-      "Isolated container builds with Docker",
-      "Automated testing and image registry deployment"
+      "Implementierung einer CI/CD-Pipeline für die OWASP Juice Shop Anwendung",
+      "Analyse von OWASP Top 10 Sicherheitslücken und sicheren Deployment-Konzepten",
+      "Nutzung von Docker und GitLab CI/CD zur Automatisierung"
+    ]
+  },
+  {
+    id: "hci-dashboard-design",
+    title: "HCI Dashboard Design",
+    subtitle: "Figma | UI/UX Prototyping",
+    category: "UI/UX & WebGL",
+    description: "Gestaltung eines interaktiven Dashboard-Prototyps mit Figma.",
+    longDescription: "Gestaltung eines interaktiven Dashboard-Prototyps mit Figma. Fokus auf Benutzerfreundlichkeit, modernes UI-Design und HCI-Prinzipien (Human-Computer Interaction) sowie Erstellung responsiver Layouts und UI-Komponenten.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+    demoUrl: "https://figma.com",
+    githubUrl: "https://github.com/aryan020104/HCI-Dashboard-Design",
+    tags: ["Figma", "UI/UX", "HCI-Prinzipien", "Prototyping", "Responsive Layouts"],
+    featured: true,
+    architectureHighlights: [
+      "Gestaltung eines interaktiven Dashboard-Prototyps mit Figma",
+      "Fokus auf Benutzerfreundlichkeit, modernes UI-Design und HCI-Prinzipien",
+      "Erstellung responsiver Layouts und UI-Komponenten"
     ]
   }
 ];
 
 export const SKILL_CATEGORIES: SkillCategory[] = [
   {
-    title: "Programming Languages",
+    title: "Backend & System Development",
     iconName: "Code2",
     skills: [
-      { name: "Java", level: 92, experience: "3+ yrs", featured: true },
-      { name: "C / C++", level: 85, experience: "2+ yrs", featured: true },
-      { name: "C#", level: 80, experience: "2+ yrs" },
-      { name: "JavaScript", level: 88, experience: "2+ yrs", featured: true },
+      { name: "Java (Spring Boot / JPA / REST API)", level: 90, experience: "Gute Kenntnisse", featured: true },
+      { name: "MySQL / DBMS", level: 88, experience: "Fortgeschritten", featured: true },
+      { name: "Spring Boot Framework", level: 86, experience: "REST / JWT / Security", featured: true },
+      { name: "Git & Maven", level: 90, experience: "Version Control & Build", featured: true },
+      { name: "GraphAlgorithmen & OOP", level: 85, experience: "Datenstrukturen", featured: true }
     ]
   },
   {
-    title: "Web & Design",
+    title: "Frontend, GUI & Design",
     iconName: "Layout",
     skills: [
-      { name: "HTML5 / CSS3", level: 94, experience: "3+ yrs", featured: true },
-      { name: "JavaFX", level: 88, experience: "2+ yrs", featured: true },
-      { name: "Figma (UI/UX Design)", level: 90, experience: "2+ yrs", featured: true },
-      { name: "Godot Engine", level: 78, experience: "1+ yr" },
+      { name: "HTML & CSS", level: 88, experience: "Gute Kenntnisse", featured: true },
+      { name: "JavaFX Framework", level: 85, experience: "Desktop GUI", featured: true },
+      { name: "Figma (UI/UX & HCI)", level: 86, experience: "Prototyping", featured: true },
+      { name: "Godot Engine", level: 75, experience: "Game Dev", featured: false }
     ]
   },
   {
-    title: "DevOps & Tools",
+    title: "DevSecOps & Automation",
     iconName: "Cloud",
     skills: [
-      { name: "Docker", level: 88, experience: "2+ yrs", featured: true },
-      { name: "GitLab CI/CD", level: 86, experience: "2+ yrs", featured: true },
-      { name: "OWASP / DevSecOps", level: 84, experience: "2+ yrs", featured: true },
-      { name: "Git & Version Control", level: 92, experience: "3+ yrs", featured: true },
+      { name: "Docker", level: 82, experience: "Containerization", featured: true },
+      { name: "GitLab CI/CD", level: 84, experience: "Pipelines & Security", featured: true },
+      { name: "OWASP Top 10 Security", level: 80, experience: "Vulnerability Analysis", featured: true }
     ]
   }
 ];
@@ -237,118 +202,127 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 export const EXPERIENCES: ExperienceItem[] = [
   {
     id: "exp-1",
-    role: "B.Sc. Software Design Student",
-    company: "Technische Hochschule Aschaffenburg",
-    location: "Aschaffenburg, Bayern, Germany",
-    period: "09/2024 - Present",
+    role: "Software Design International Student",
+    company: "Technischen Hochschule Aschaffenburg",
+    location: "Aschaffenburg, Deutschland",
+    period: "15.09.2024 - Aktuell",
     description: [
-      "Enrolled in Software Design B.Sc. focusing on Computer Science, Advanced Software Engineering, and Systems Architecture.",
-      "Developing high-concurrency drone routing algorithms, graph optimization engines, and Java desktop applications.",
-      "Participating actively in team projects, leading software architecture discussions, and peer mentoring."
+      "Studium Software Design International an der Technischen Hochschule Aschaffenburg (EQR-Niveau 6).",
+      "Entwicklung von REST-APIs, Spring Boot Backend-Systemen, JavaFX Desktop-Anwendungen und Drohnennetzwerk-Optimierungsalgorithmen.",
+      "Fokus auf DevSecOps pipelines, OWASP Sicherheitskonzepte und objektorientierte Softwareentwicklung (OOP)."
     ],
-    technologies: ["Java", "C++", "Software Design", "Graph Algorithms", "Git"],
+    technologies: ["Java", "Spring Boot", "MySQL", "GitLab CI/CD", "Docker", "JavaFX"],
     type: "Education"
   },
   {
     id: "exp-2",
-    role: "B.Tech. Computer Engineering (Former Studies)",
+    role: "Bachelors of Technology in Computer Engineering",
     company: "Marwadi University",
-    location: "Rajkot, India",
-    period: "09/2022 - 06/2023",
+    location: "Rajkot, Gujarat, Indien",
+    period: "08.09.2022 - 24.06.2023",
     description: [
-      "Completed foundational computer engineering coursework covering Object-Oriented Programming, Data Structures, and Database Management.",
-      "Built early Java applications and interactive desktop utilities."
+      "Grundstudium Computer Engineering (EQR-Niveau 6).",
+      "Gute Kenntnisse in Java, HTML, CSS, DBMS und objektorientierten Programmierungskonzepten."
     ],
-    technologies: ["C", "C++", "Java", "Data Structures"],
+    technologies: ["Java", "HTML", "CSS", "DBMS", "MySQL"],
     type: "Education"
   }
 ];
 
 export const EDUCATION_LIST = [
   {
-    institution: "Technische Hochschule Aschaffenburg",
-    degree: "Software Design (B.Sc.)",
-    location: "Aschaffenburg, Bayern, Germany",
-    period: "09/2024 - Present",
-    specialization: "Informatik / Softwareentwicklung",
-    status: "Currently Enrolled"
+    institution: "Technischen Hochschule Aschaffenburg",
+    degree: "Software Design International",
+    location: "Aschaffenburg, Deutschland",
+    period: "15.09.2024 - Aktuell",
+    specialization: "EQR-Niveau: 6 | Software Design & Backend Engineering",
+    status: "Aktuell"
   },
   {
     institution: "Marwadi University",
-    degree: "Bachelor of Technology — Computer Engineering",
-    location: "Rajkot, India",
-    period: "09/2022 - 06/2023",
-    specialization: "Computer Engineering",
-    status: "Completed Coursework"
+    degree: "BACHELORS OF TECHNOLOGY IN COMPUTER ENGINEERING",
+    location: "Rajkot, Gujarat, Indien",
+    period: "08.09.2022 - 24.06.2023",
+    specialization: "EQR-Niveau: 6 | Computer Engineering",
+    status: "Abgeschlossen"
   },
   {
-    institution: "Delhi World Public School (DWPS)",
-    degree: "Abitur (12th Grade - CBSE)",
-    location: "Rajkot, India",
+    institution: "DELHI WORLD PUBLIC SCHOOL (DWPS)",
+    degree: "12th Grade [ Central Board of Secondary Education (CBSE) ]",
+    location: "Rajkot, Gujarat, Indien",
     period: "2022",
-    specialization: "Science & Mathematics",
-    status: "Completed (Grade: 83%)"
+    specialization: "EQR-Niveau: 5 | Sekundarstufe II",
+    status: "Abgeschlossen"
   },
   {
-    institution: "Delhi World Public School (DWPS)",
-    degree: "Mittlere Reife (10th Grade - CBSE)",
-    location: "Rajkot, India",
+    institution: "DELHI WORLD PUBLIC SCHOOL (DWPS)",
+    degree: "10th grade [ Central Board of Secondary Education (CBSE) ]",
+    location: "Rajkot, Gujarat, Indien",
     period: "2020",
-    specialization: "General Secondary Education",
-    status: "Completed (Grade: 83%)"
+    specialization: "EQR-Niveau: 3 | Sekundarstufe I",
+    status: "Abgeschlossen"
   }
 ];
 
 export const LANGUAGES = [
-  { name: "Gujarati", level: "Native (Muttersprache)", proficiency: 100 },
-  { name: "English", level: "Full Professional (IELTS 7.0 / C1 Reading)", proficiency: 92 },
-  { name: "German (Deutsch)", level: "Professional Working (Goethe-Zertifikat B2)", proficiency: 85 },
+  { name: "Gujarati", level: "Muttersprache(n)", proficiency: 100 },
+  { name: "Englisch", level: "C1 (Hören, Lesen, Schreiben, Sprechen: C1)", proficiency: 92 },
+  { name: "Deutsch", level: "B2 (Hören, Lesen, Schreiben, Sprechen: B2)", proficiency: 82 }
+];
+
+export const HOBBIES = [
+  "Programmierung",
+  "Musik Hören",
+  "Fußball",
+  "Cricket",
+  "Fremdsprache Lernen"
 ];
 
 export const CERTIFICATES: CertificateItem[] = [
   {
     id: "cert-1",
-    title: "Goethe-Zertifikat B2",
-    issuer: "Goethe-Institut",
-    date: "02/2024",
-    credentialUrl: "https://goethe.de",
-    skills: ["German B2 Level", "Reading 71/100", "Writing 80/100", "Speaking 76/100"]
+    title: "Software Design International (EQR-Niveau 6)",
+    issuer: "Technischen Hochschule Aschaffenburg",
+    date: "15.09.2024 - Aktuell",
+    credentialUrl: "https://www.th-ab.de/",
+    skills: ["Software Design", "Java", "Spring Boot", "DBMS"]
   },
   {
     id: "cert-2",
-    title: "IELTS Academic (Overall Band 7.0)",
-    issuer: "IDP / British Council",
-    date: "07/2023",
-    credentialUrl: "https://ielts.org",
-    skills: ["Listening 7.5", "Reading 6.5", "Writing 6.5", "Speaking 6.5"]
+    title: "B.Tech Computer Engineering (EQR-Niveau 6)",
+    issuer: "Marwadi University",
+    date: "08.09.2022 - 24.06.2023",
+    credentialUrl: "https://www.marwadiuniversity.ac.in/",
+    skills: ["Computer Engineering", "Java", "HTML/CSS", "DBMS"]
   },
   {
     id: "cert-3",
-    title: "Goethe-Zertifikat B1",
-    issuer: "Goethe-Institut",
-    date: "11/2023",
-    credentialUrl: "https://goethe.de",
-    skills: ["German B1 Level", "Reading 80/100", "Writing 96/100", "Speaking 72/100"]
+    title: "12th Grade CBSE (EQR-Niveau 5)",
+    issuer: "DELHI WORLD PUBLIC SCHOOL (DWPS)",
+    date: "2022",
+    credentialUrl: "https://cbse.gov.in",
+    skills: ["CBSE Science", "Mathematik"]
   },
   {
     id: "cert-4",
-    title: "TestAS Examination",
-    issuer: "TestAS Institute",
-    date: "04/2023",
-    credentialUrl: "https://testas.de",
-    skills: ["Core Test: 96/130", "Subject Module: 96/130"]
+    title: "10th Grade CBSE (EQR-Niveau 3)",
+    issuer: "DELHI WORLD PUBLIC SCHOOL (DWPS)",
+    date: "2020",
+    credentialUrl: "https://cbse.gov.in",
+    skills: ["CBSE General Education"]
   }
 ];
 
 export const GITHUB_STATS = {
   username: "aryan020104",
-  totalCommits: 850,
-  pullRequests: 42,
-  starsEarned: 95,
+  totalCommits: 500,
+  pullRequests: 28,
+  starsEarned: 45,
   repositories: [
-    { name: "DroneNetOptimizer", stars: 24, language: "Java", desc: "Drone network optimization in Java" },
-    { name: "OWASP-Juice-Shop-DevSecOps", stars: 31, language: "Docker / GitLab CI", desc: "Security scanning pipeline" },
-    { name: "DroneDeliveryNetwork", stars: 18, language: "Java", desc: "Drone flight coordination simulation" },
-    { name: "Vulnerability-Monitoring-Dashboard", stars: 22, language: "Figma / UI", desc: "Security status visualization" }
+    { name: "InternFlow", stars: 15, language: "Java / Spring Boot", desc: "Praktikumsverwaltungssystem REST-API mit MySQL & JWT" },
+    { name: "DroneNetOptimizer", stars: 12, language: "Java", desc: "Drohnennetzwerk-Optimierung mit Graphalgorithmen" },
+    { name: "OWASP-Juice-Shop-DevSecOps", stars: 18, language: "Docker / GitLab CI", desc: "CI/CD Pipeline mit Security Scanning" },
+    { name: "Budgetting-App", stars: 10, language: "Java / JavaFX", desc: "Desktop-Finanzverwaltungsanwendung" }
   ]
 };
+

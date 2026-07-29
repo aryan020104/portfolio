@@ -167,7 +167,7 @@ export default function Hero() {
             </div>
             <div className="flex items-center space-x-2">
               <Code2 className="w-4 h-4 text-emerald-400" />
-              <span>Java • Spring Boot • React</span>
+              <span>Java • Spring Boot • MySQL</span>
             </div>
           </motion.div>
         </motion.div>

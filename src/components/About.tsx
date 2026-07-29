@@ -10,9 +10,10 @@ import {
   Award, 
   BookOpen, 
   Languages as LanguagesIcon,
-  CheckCircle2
+  CheckCircle2,
+  Heart
 } from "lucide-react";
-import { PERSONAL_INFO, LANGUAGES } from "@/constants/portfolioData";
+import { PERSONAL_INFO, LANGUAGES, HOBBIES } from "@/constants/portfolioData";
 
 function StatCounter({ value, label, icon: Icon }: { value: string; label: string; icon: React.ElementType }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -69,7 +70,7 @@ function StatCounter({ value, label, icon: Icon }: { value: string; label: strin
 }
 
 export default function About() {
-  const [activeTab, setActiveTab] = useState<"story" | "languages" | "academic">("story");
+  const [activeTab, setActiveTab] = useState<"story" | "languages" | "academic" | "hobbies">("story");
 
   return (
     <section id="about" className="py-28 px-6 md:px-12 max-w-7xl mx-auto relative">
@@ -111,9 +112,9 @@ export default function About() {
               {/* Code Snippet Card */}
               <div className="bg-[#050505]/90 p-4 rounded-xl border border-white/10 font-mono text-xs text-muted space-y-1 shadow-lg">
                 <p className="text-accent">class <span className="text-white font-semibold">AryanSorathiya</span> {"{"}</p>
-                <p className="pl-4">String degree = <span className="text-emerald-400">&quot;Software Design B.Sc.&quot;</span>;</p>
+                <p className="pl-4">String degree = <span className="text-emerald-400">&quot;Software Design International&quot;</span>;</p>
                 <p className="pl-4">String location = <span className="text-emerald-400">&quot;Aschaffenburg, Germany&quot;</span>;</p>
-                <p className="pl-4">String core = <span className="text-secondary">&quot;Java, DevSecOps, C++&quot;</span>;</p>
+                <p className="pl-4">String core = <span className="text-secondary">&quot;Java, Spring Boot, MySQL, DevSecOps&quot;</span>;</p>
                 <p>{"}"}</p>
               </div>
             </div>
@@ -123,10 +124,11 @@ export default function About() {
               <h3 className="text-lg font-bold text-white font-display">Core Competencies</h3>
               <div className="space-y-2">
                 {[
-                  "Drone network optimization & graph algorithms",
-                  "Automated DevSecOps & GitLab CI/CD pipelines",
-                  "Object-Oriented Software Engineering (OOP) in Java & C++",
-                  "Multilingual: German (B2 Goethe), English (C1 IELTS), Gujarati"
+                  "REST-API & Spring Boot Backend Architecture",
+                  "MySQL Relational DBMS & Hibernate/JPA",
+                  "GitLab CI/CD Pipelines & Docker DevSecOps",
+                  "JavaFX Desktop GUIs & Godot Engine Games",
+                  "Languages: Gujarati (Native), English (C1), German (B2)"
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-center space-x-3 text-sm text-muted">
                     <CheckCircle2 className="w-4 h-4 text-accent shrink-0" />
@@ -153,11 +155,12 @@ export default function About() {
           className="lg:col-span-7 flex flex-col justify-between space-y-8"
         >
           {/* Tabs Navigation */}
-          <div className="flex items-center space-x-2 p-1.5 rounded-2xl bg-[#111111] border border-white/10 max-w-fit">
+          <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-[#111111] border border-white/10 max-w-fit">
             {[
               { id: "story", label: "Profile", icon: BookOpen },
               { id: "languages", label: "Languages", icon: LanguagesIcon },
               { id: "academic", label: "Academics", icon: Award },
+              { id: "hobbies", label: "Hobbies", icon: Heart },
             ].map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -165,7 +168,7 @@ export default function About() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as typeof activeTab)}
-                  className={`relative px-5 py-2.5 rounded-xl text-xs font-mono uppercase tracking-wider transition-all duration-300 flex items-center space-x-2 ${
+                  className={`relative px-4 py-2 rounded-xl text-xs font-mono uppercase tracking-wider transition-all duration-300 flex items-center space-x-2 ${
                     isActive ? "text-white font-semibold" : "text-muted hover:text-white"
                   }`}
                   data-cursor-text="SELECT"
@@ -195,7 +198,7 @@ export default function About() {
                   &quot;{PERSONAL_INFO.bio}&quot;
                 </p>
                 <p className="text-muted leading-relaxed text-sm md:text-base">
-                  I am a Software Design student at Technische Hochschule Aschaffenburg, Germany. I specialize in Java system development, drone routing algorithm optimization, DevSecOps pipelines, and modern interactive applications.
+                  I am a Software Design International student at Technischen Hochschule Aschaffenburg, Germany. I specialize in Java backend architecture, Spring Boot REST-APIs, MySQL databases, DevSecOps pipelines with Docker and GitLab CI/CD, and desktop applications.
                 </p>
               </motion.div>
             )}
@@ -203,7 +206,7 @@ export default function About() {
             {activeTab === "languages" && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
                 <h3 className="text-xl font-bold font-display text-white">
-                  Language Proficiency (Sprachkenntnisse)
+                  Sprachkenntnisse (Language Proficiency)
                 </h3>
                 <div className="space-y-4 pt-2">
                   {LANGUAGES.map((lang) => (
@@ -227,16 +230,35 @@ export default function About() {
             {activeTab === "academic" && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
                 <h3 className="text-xl font-bold font-display text-white">
-                  Software Design B.Sc. — TH Aschaffenburg
+                  Software Design International — TH Aschaffenburg
                 </h3>
                 <p className="text-muted leading-relaxed text-sm md:text-base">
-                  Pursuing Software Design B.Sc. in Aschaffenburg, Germany (Specialization: Informatik / Softwareentwicklung). Formerly studied Computer Engineering B.Tech. at Marwadi University, India.
+                  Pursuing Software Design International (EQR-Niveau 6) at Technischen Hochschule Aschaffenburg, Germany. Previously completed B.Tech in Computer Engineering coursework at Marwadi University, India.
                 </p>
                 <div className="flex flex-wrap gap-2 pt-2">
-                  {["Software Design", "Informatik", "Drone Routing", "DevSecOps", "JavaFX", "Figma HCI"].map((course, i) => (
+                  {["Software Design", "Spring Boot", "MySQL DBMS", "DevSecOps", "JavaFX", "Figma HCI"].map((course, i) => (
                     <span key={i} className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-muted">
                       {course}
                     </span>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {activeTab === "hobbies" && (
+              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
+                <h3 className="text-xl font-bold font-display text-white">
+                  Hobbys und Interessen
+                </h3>
+                <p className="text-muted leading-relaxed text-sm md:text-base">
+                  Outside of software design, I enjoy activities that foster continuous learning, teamwork, and active focus:
+                </p>
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
+                  {HOBBIES.map((hobby) => (
+                    <div key={hobby} className="px-4 py-3 rounded-2xl bg-white/5 border border-white/10 flex items-center space-x-2 text-xs font-mono text-white">
+                      <Heart className="w-3.5 h-3.5 text-accent shrink-0" />
+                      <span>{hobby}</span>
+                    </div>
                   ))}
                 </div>
               </motion.div>
@@ -255,3 +277,4 @@ export default function About() {
     </section>
   );
 }
+

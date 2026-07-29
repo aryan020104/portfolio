@@ -15,9 +15,9 @@ import {
 import { SKILL_CATEGORIES } from "@/constants/portfolioData";
 
 const MARQUEE_SKILLS = [
-  "Java 21", "Spring Boot 3", "React 19", "Next.js 15", "TypeScript",
-  "Docker", "AWS", "Kafka", "PostgreSQL", "MongoDB", "Redis",
-  "Tailwind CSS", "Three.js", "GraphQL", "Python", "FastAPI", "Git"
+  "Java", "Spring Boot", "MySQL", "Spring Security", "Spring Data JPA",
+  "JavaFX", "GitLab CI/CD", "Docker", "REST API", "Git", "Maven",
+  "Hibernate / JPA", "JWT & BCrypt", "Figma UI/UX", "Godot Engine", "DBMS", "GraphAlgorithmen"
 ];
 
 const ICON_MAP: Record<string, React.ElementType> = {
