@@ -12,7 +12,8 @@ import {
   Sparkles,
   Zap
 } from "lucide-react";
-import { SKILL_CATEGORIES } from "@/constants/portfolioData";
+import { SKILL_CATEGORIES, UI_STRINGS } from "@/constants/portfolioData";
+import { useLanguage } from "@/context/LanguageContext";
 
 const MARQUEE_SKILLS = [
   "Java", "Spring Boot", "MySQL", "Spring Security", "Spring Data JPA",
@@ -30,13 +31,17 @@ const ICON_MAP: Record<string, React.ElementType> = {
 };
 
 export default function Skills() {
+  const { language } = useLanguage();
+  const skillCategories = SKILL_CATEGORIES[language];
+  const skillStrings = UI_STRINGS[language].skills;
+
   const [activeCategory, setActiveCategory] = useState<string>("All");
 
-  const categoriesList = ["All", ...SKILL_CATEGORIES.map((c) => c.title)];
+  const categoriesList = ["All", ...skillCategories.map((c) => c.title)];
 
   const filteredCategories = activeCategory === "All" 
-    ? SKILL_CATEGORIES 
-    : SKILL_CATEGORIES.filter(c => c.title === activeCategory);
+    ? skillCategories 
+    : skillCategories.filter(c => c.title === activeCategory);
 
   return (
     <section id="skills" className="py-28 relative overflow-hidden">
@@ -64,10 +69,10 @@ export default function Skills() {
           <div className="space-y-4">
             <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-secondary/10 border border-secondary/20 text-secondary text-xs font-mono tracking-wider uppercase">
               <Sparkles className="w-3.5 h-3.5" />
-              <span>Technical Expertise</span>
+              <span>{skillStrings.badge}</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-white">
-              Skills & <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">Technologies</span>.
+              {skillStrings.headingPart1} <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">{skillStrings.headingHighlight}</span>.
             </h2>
           </div>
 
@@ -84,7 +89,7 @@ export default function Skills() {
                 }`}
                 data-cursor-text="FILTER"
               >
-                {cat}
+                {cat === "All" ? skillStrings.filterAll : cat}
               </button>
             ))}
           </div>
@@ -156,8 +161,8 @@ export default function Skills() {
 
                 {/* Footer note */}
                 <div className="mt-8 pt-4 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-muted uppercase">
-                  <span>Production Ready</span>
-                  <span className="text-accent">High Proficiency</span>
+                  <span>{skillStrings.productionReady}</span>
+                  <span className="text-accent">{skillStrings.highProficiency}</span>
                 </div>
               </motion.div>
             );

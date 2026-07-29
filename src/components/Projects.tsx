@@ -6,25 +6,29 @@ import {
   FolderGit2, 
   ExternalLink, 
   Github, 
-  Sparkles, 
   ArrowUpRight,
   Eye,
   Layers
 } from "lucide-react";
-import { PROJECTS } from "@/constants/portfolioData";
+import { PROJECTS, UI_STRINGS } from "@/constants/portfolioData";
 import { Project } from "@/types";
 import ProjectModal from "./ProjectModal";
 import Image from "next/image";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Projects() {
+  const { language } = useLanguage();
+  const projectsList = PROJECTS[language];
+  const projectStrings = UI_STRINGS[language].projects;
+
   const [selectedCategory, setSelectedCategory] = useState<string>("All");
   const [activeModalProject, setActiveModalProject] = useState<Project | null>(null);
 
   const categories = ["All", "Full Stack", "Java & Backend", "Security & Systems", "UI/UX & WebGL"];
 
   const filteredProjects = selectedCategory === "All"
-    ? PROJECTS
-    : PROJECTS.filter(p => p.category === selectedCategory);
+    ? projectsList
+    : projectsList.filter(p => p.category === selectedCategory);
 
   return (
     <section id="projects" className="py-28 px-6 md:px-12 max-w-7xl mx-auto relative">
@@ -33,10 +37,10 @@ export default function Projects() {
         <div className="space-y-4">
           <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-mono tracking-wider uppercase">
             <FolderGit2 className="w-3.5 h-3.5" />
-            <span>Featured Portfolio Works</span>
+            <span>{projectStrings.badge}</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-white">
-            Engineered Systems & <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">Web Platforms</span>.
+            {projectStrings.headingPart1} <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">{projectStrings.headingHighlight}</span>.
           </h2>
         </div>
 
@@ -53,7 +57,7 @@ export default function Projects() {
               }`}
               data-cursor-text="FILTER"
             >
-              {cat}
+              {cat === "All" ? projectStrings.filterAll : cat}
             </button>
           ))}
         </div>
@@ -86,7 +90,7 @@ export default function Projects() {
                   className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                 />
                 
-                {/* Gradient Gradient Mask */}
+                {/* Gradient Mask */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-[#111111]/30 to-transparent" />
 
                 {/* Category Pill Tag */}
@@ -100,7 +104,7 @@ export default function Projects() {
                 <div className="absolute inset-0 bg-accent/20 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="px-5 py-2.5 rounded-full bg-black/90 border border-white/20 text-xs font-mono font-semibold text-white flex items-center space-x-2 shadow-2xl">
                     <Eye className="w-4 h-4 text-accent" />
-                    <span>View Case Study</span>
+                    <span>{projectStrings.viewCaseStudy}</span>
                   </div>
                 </div>
               </div>
@@ -147,7 +151,7 @@ export default function Projects() {
                       className="text-xs font-mono text-accent hover:underline flex items-center space-x-1 font-semibold uppercase tracking-wider"
                     >
                       <Layers className="w-3.5 h-3.5" />
-                      <span>Architecture Details</span>
+                      <span>{projectStrings.architectureDetails}</span>
                     </button>
 
                     <div className="flex items-center space-x-3">
@@ -156,7 +160,7 @@ export default function Projects() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 text-muted hover:text-white transition-colors"
-                        title="View Source Code"
+                        title={projectStrings.github}
                         data-cursor-text="GITHUB"
                       >
                         <Github className="w-4 h-4" />
@@ -167,7 +171,7 @@ export default function Projects() {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="p-2.5 rounded-xl bg-accent/20 hover:bg-accent/30 text-accent transition-colors"
-                          title="Live Preview"
+                          title={projectStrings.liveDemo}
                           data-cursor-text="DEMO"
                         >
                           <ExternalLink className="w-4 h-4" />

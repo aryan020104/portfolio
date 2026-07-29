@@ -10,19 +10,25 @@ import {
   Building2,
   BookOpen
 } from "lucide-react";
-import { EDUCATION_LIST, PERSONAL_INFO } from "@/constants/portfolioData";
+import { EDUCATION_LIST, PERSONAL_INFO, UI_STRINGS } from "@/constants/portfolioData";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ExperienceEducation() {
+  const { language } = useLanguage();
+  const educationList = EDUCATION_LIST[language];
+  const personalInfo = PERSONAL_INFO[language];
+  const expStrings = UI_STRINGS[language].experience;
+
   return (
     <section id="experience" className="py-28 px-6 md:px-12 max-w-7xl mx-auto relative">
       {/* Header */}
       <div className="space-y-4 mb-20 text-center md:text-left">
         <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-mono tracking-wider uppercase">
           <GraduationCap className="w-3.5 h-3.5" />
-          <span>Academic & Education Journey</span>
+          <span>{expStrings.badge}</span>
         </div>
         <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-white">
-          Ausbildung & <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">Studium</span>.
+          {expStrings.headingPart1} <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">{expStrings.headingHighlight}</span>.
         </h2>
       </div>
 
@@ -32,7 +38,7 @@ export default function ExperienceEducation() {
           {/* Vertical Connecting Line */}
           <div className="absolute top-4 bottom-4 left-6 w-[2px] bg-gradient-to-b from-accent via-secondary to-transparent z-0 hidden sm:block" />
 
-          {EDUCATION_LIST.map((edu, idx) => (
+          {educationList.map((edu, idx) => (
             <motion.div
               key={idx}
               initial={{ opacity: 0, x: -30 }}
@@ -76,7 +82,7 @@ export default function ExperienceEducation() {
                 <div className="pt-2">
                   <div className="flex items-center space-x-2 text-xs font-mono text-emerald-400 bg-emerald-500/10 px-3 py-1.5 rounded-xl border border-emerald-500/20 max-w-fit">
                     <CheckCircle2 className="w-3.5 h-3.5" />
-                    <span>Fachrichtung / Focus: {edu.specialization}</span>
+                    <span>{edu.specialization}</span>
                   </div>
                 </div>
               </div>
@@ -101,7 +107,7 @@ export default function ExperienceEducation() {
                 <BookOpen className="w-8 h-8" />
               </div>
               <div>
-                <span className="text-xs font-mono text-secondary uppercase font-bold tracking-wider">Current Institution</span>
+                <span className="text-xs font-mono text-secondary uppercase font-bold tracking-wider">{expStrings.currentInstitution}</span>
                 <h3 className="text-2xl font-bold font-display text-white">
                   TH Aschaffenburg
                 </h3>
@@ -110,32 +116,32 @@ export default function ExperienceEducation() {
 
             <div className="space-y-3 font-mono text-xs text-muted border-t border-b border-white/10 py-4">
               <div className="flex justify-between">
-                <span>DEGREE:</span>
-                <span className="text-white font-semibold">{PERSONAL_INFO.degree}</span>
+                <span>{expStrings.degreeLabel}</span>
+                <span className="text-white font-semibold">{personalInfo.degree}</span>
               </div>
               <div className="flex justify-between">
-                <span>LOCATION:</span>
-                <span className="text-white">Aschaffenburg, Bayern, Germany</span>
+                <span>{expStrings.locationLabel}</span>
+                <span className="text-white">{personalInfo.location}</span>
               </div>
               <div className="flex justify-between">
-                <span>TIMELINE:</span>
-                <span className="text-accent font-semibold">09/2024 - Present</span>
+                <span>{expStrings.timelineLabel}</span>
+                <span className="text-accent font-semibold">15.09.2024 - Present</span>
               </div>
               <div className="flex justify-between">
-                <span>NATIONALITY:</span>
-                <span className="text-emerald-400 font-semibold">{PERSONAL_INFO.nationality}</span>
+                <span>{expStrings.nationalityLabel}</span>
+                <span className="text-emerald-400 font-semibold">{personalInfo.nationality}</span>
               </div>
             </div>
 
             <div className="space-y-3">
               <h4 className="text-xs font-mono uppercase text-white tracking-wider flex items-center space-x-2">
                 <Sparkles className="w-3.5 h-3.5 text-accent" />
-                <span>Specialization Areas</span>
+                <span>{expStrings.specializationAreas}</span>
               </h4>
               <div className="space-y-2 text-xs text-muted">
-                <p>• Software Design International (EQR-Niveau 6)</p>
-                <p>• Java Backend Architecture (Spring Boot & MySQL)</p>
-                <p>• Drohnennetzwerk-Optimierung & DevSecOps Pipelines</p>
+                {expStrings.specializationList.map((item, i) => (
+                  <p key={i}>{item}</p>
+                ))}
               </div>
             </div>
           </div>

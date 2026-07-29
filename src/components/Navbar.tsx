@@ -10,30 +10,27 @@ import {
   Menu, 
   X, 
   Sparkles,
-  ArrowUpRight
+  ArrowUpRight,
+  Globe
 } from "lucide-react";
-import { PERSONAL_INFO } from "@/constants/portfolioData";
-
-const NAV_LINKS = [
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "#projects" },
-  { name: "Experience", href: "#experience" },
-  { name: "Certificates", href: "#certificates" },
-  { name: "Contact", href: "#contact" },
-];
+import { PERSONAL_INFO, UI_STRINGS } from "@/constants/portfolioData";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navbar() {
+  const { language, toggleLanguage, setLanguage } = useLanguage();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(false);
 
+  const navLinks = UI_STRINGS[language].navLinks;
+  const personalInfo = PERSONAL_INFO[language];
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 40);
 
-      const sections = NAV_LINKS.map(link => link.href.substring(1));
+      const sections = navLinks.map(link => link.href.substring(1));
       const scrollPos = window.scrollY + 200;
 
       for (const sectionId of sections) {
@@ -51,7 +48,7 @@ export default function Navbar() {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [navLinks]);
 
   const toggleSound = () => {
     setSoundEnabled(!soundEnabled);
@@ -82,7 +79,7 @@ export default function Navbar() {
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "py-4 bg-[#050505]/70 backdrop-blur-xl border-b border-white/10 shadow-2xl"
+          ? "py-4 bg-[#050505]/80 backdrop-blur-xl border-b border-white/10 shadow-2xl"
           : "py-6 bg-transparent"
       }`}
     >
@@ -100,7 +97,7 @@ export default function Navbar() {
           </div>
           <div className="flex flex-col">
             <span className="leading-none text-white group-hover:text-accent transition-colors font-bold">
-              {PERSONAL_INFO.shortName}
+              {personalInfo.shortName}
             </span>
             <span className="text-[10px] font-mono text-muted tracking-wider uppercase mt-1">
               Software Design B.Sc.
@@ -110,7 +107,7 @@ export default function Navbar() {
 
         {/* Center Links (Desktop) */}
         <nav className="hidden lg:flex items-center space-x-1 p-1.5 rounded-full bg-[#111111]/80 border border-white/10 backdrop-blur-md">
-          {NAV_LINKS.map((link) => {
+          {navLinks.map((link) => {
             const isActive = activeSection === link.href.substring(1);
             return (
               <a
@@ -138,6 +135,19 @@ export default function Navbar() {
 
         {/* Right CTA & Controls */}
         <div className="hidden lg:flex items-center space-x-3">
+          {/* Language Toggle Button */}
+          <button
+            onClick={toggleLanguage}
+            className="flex items-center space-x-1.5 px-3 py-2 rounded-xl bg-[#111111] border border-white/15 hover:border-accent text-xs font-mono font-semibold transition-all duration-300 hover:scale-105 active:scale-95 shadow-md"
+            title="Switch Language / Sprache wechseln"
+            data-cursor-text="LANG"
+          >
+            <Globe className="w-3.5 h-3.5 text-accent" />
+            <span className={language === "en" ? "text-accent font-bold" : "text-muted"}>EN</span>
+            <span className="text-white/20">|</span>
+            <span className={language === "de" ? "text-accent font-bold" : "text-muted"}>DE</span>
+          </button>
+
           <button
             onClick={toggleSound}
             className="p-2.5 rounded-xl bg-[#111111] border border-white/10 text-muted hover:text-white hover:border-white/25 transition-all"
@@ -172,8 +182,16 @@ export default function Navbar() {
           </a>
         </div>
 
-        {/* Mobile Hamburger Toggle */}
-        <div className="flex lg:hidden items-center space-x-3">
+        {/* Mobile Controls & Hamburger */}
+        <div className="flex lg:hidden items-center space-x-2">
+          {/* Mobile Language Toggle */}
+          <button
+            onClick={toggleLanguage}
+            className="px-2.5 py-1.5 rounded-lg bg-[#111111] border border-white/15 text-xs font-mono font-bold text-accent"
+          >
+            {language.toUpperCase()}
+          </button>
+
           <button
             onClick={toggleSound}
             className="p-2 rounded-lg bg-[#111111] border border-white/10 text-muted"
@@ -201,7 +219,25 @@ export default function Navbar() {
             className="lg:hidden bg-[#050505]/95 backdrop-blur-2xl border-b border-white/10 px-6 py-8"
           >
             <div className="flex flex-col space-y-4">
-              {NAV_LINKS.map((link) => (
+              <div className="flex items-center justify-between pb-3 border-b border-white/10 text-xs font-mono">
+                <span className="text-muted">LANGUAGE / SPRACHE</span>
+                <div className="flex space-x-2">
+                  <button
+                    onClick={() => setLanguage("en")}
+                    className={`px-3 py-1 rounded-lg border ${language === "en" ? "bg-accent border-accent text-white font-bold" : "bg-white/5 border-white/10 text-muted"}`}
+                  >
+                    EN (English)
+                  </button>
+                  <button
+                    onClick={() => setLanguage("de")}
+                    className={`px-3 py-1 rounded-lg border ${language === "de" ? "bg-accent border-accent text-white font-bold" : "bg-white/5 border-white/10 text-muted"}`}
+                  >
+                    DE (Deutsch)
+                  </button>
+                </div>
+              </div>
+
+              {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}

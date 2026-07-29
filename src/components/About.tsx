@@ -13,7 +13,8 @@ import {
   CheckCircle2,
   Heart
 } from "lucide-react";
-import { PERSONAL_INFO, LANGUAGES, HOBBIES } from "@/constants/portfolioData";
+import { PERSONAL_INFO, LANGUAGES, HOBBIES, UI_STRINGS } from "@/constants/portfolioData";
+import { useLanguage } from "@/context/LanguageContext";
 
 function StatCounter({ value, label, icon: Icon }: { value: string; label: string; icon: React.ElementType }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -70,6 +71,12 @@ function StatCounter({ value, label, icon: Icon }: { value: string; label: strin
 }
 
 export default function About() {
+  const { language } = useLanguage();
+  const personalInfo = PERSONAL_INFO[language];
+  const languagesList = LANGUAGES[language];
+  const hobbiesList = HOBBIES[language];
+  const aboutStrings = UI_STRINGS[language].about;
+
   const [activeTab, setActiveTab] = useState<"story" | "languages" | "academic" | "hobbies">("story");
 
   return (
@@ -78,10 +85,10 @@ export default function About() {
       <div className="space-y-4 mb-16 text-center md:text-left">
         <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-mono tracking-wider uppercase">
           <User className="w-3.5 h-3.5" />
-          <span>About {PERSONAL_INFO.shortName}</span>
+          <span>{aboutStrings.badge}</span>
         </div>
         <h2 className="text-3xl sm:text-5xl font-bold font-display tracking-tight text-white">
-          Engineered for <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">Precision</span> & Leadership.
+          {aboutStrings.headingPart1} <span className="text-transparent bg-clip-text bg-gradient-to-r from-accent to-secondary">{aboutStrings.headingHighlight}</span> & Leadership.
         </h2>
       </div>
 
@@ -121,7 +128,7 @@ export default function About() {
 
             {/* Quick Highlights list */}
             <div className="mt-8 space-y-3">
-              <h3 className="text-lg font-bold text-white font-display">Core Competencies</h3>
+              <h3 className="text-lg font-bold text-white font-display">{aboutStrings.coreCompetencies}</h3>
               <div className="space-y-2">
                 {[
                   "REST-API & Spring Boot Backend Architecture",
@@ -140,8 +147,8 @@ export default function About() {
 
             {/* University Tag */}
             <div className="mt-8 pt-6 border-t border-white/10 flex items-center justify-between text-xs font-mono text-muted">
-              <span>INSTITUTION</span>
-              <span className="text-white font-medium">{PERSONAL_INFO.university}</span>
+              <span>{aboutStrings.institution}</span>
+              <span className="text-white font-medium">{personalInfo.university}</span>
             </div>
           </div>
         </motion.div>
@@ -157,10 +164,10 @@ export default function About() {
           {/* Tabs Navigation */}
           <div className="flex flex-wrap items-center gap-2 p-1.5 rounded-2xl bg-[#111111] border border-white/10 max-w-fit">
             {[
-              { id: "story", label: "Profile", icon: BookOpen },
-              { id: "languages", label: "Languages", icon: LanguagesIcon },
-              { id: "academic", label: "Academics", icon: Award },
-              { id: "hobbies", label: "Hobbies", icon: Heart },
+              { id: "story", label: aboutStrings.storyTab, icon: BookOpen },
+              { id: "languages", label: aboutStrings.languagesTab, icon: LanguagesIcon },
+              { id: "academic", label: aboutStrings.academicTab, icon: Award },
+              { id: "hobbies", label: aboutStrings.hobbiesTab, icon: Heart },
             ].map((tab) => {
               const Icon = tab.icon;
               const isActive = activeTab === tab.id;
@@ -192,13 +199,13 @@ export default function About() {
             {activeTab === "story" && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
                 <h3 className="text-xl font-bold font-display text-white">
-                  Focused, Composed, & Driven by Practical Knowledge.
+                  {aboutStrings.storyTitle}
                 </h3>
                 <p className="text-muted leading-relaxed text-sm md:text-base italic border-l-2 border-accent pl-4 py-1">
-                  &quot;{PERSONAL_INFO.bio}&quot;
+                  &quot;{personalInfo.bio}&quot;
                 </p>
                 <p className="text-muted leading-relaxed text-sm md:text-base">
-                  I am a Software Design International student at Technischen Hochschule Aschaffenburg, Germany. I specialize in Java backend architecture, Spring Boot REST-APIs, MySQL databases, DevSecOps pipelines with Docker and GitLab CI/CD, and desktop applications.
+                  {personalInfo.tagline}
                 </p>
               </motion.div>
             )}
@@ -206,10 +213,10 @@ export default function About() {
             {activeTab === "languages" && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
                 <h3 className="text-xl font-bold font-display text-white">
-                  Sprachkenntnisse (Language Proficiency)
+                  {language === "de" ? "Sprachkenntnisse (Language Proficiency)" : "Language Proficiency"}
                 </h3>
                 <div className="space-y-4 pt-2">
-                  {LANGUAGES.map((lang) => (
+                  {languagesList.map((lang) => (
                     <div key={lang.name} className="space-y-1.5">
                       <div className="flex justify-between text-xs font-mono">
                         <span className="text-white font-bold">{lang.name}</span>
@@ -230,10 +237,10 @@ export default function About() {
             {activeTab === "academic" && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
                 <h3 className="text-xl font-bold font-display text-white">
-                  Software Design International — TH Aschaffenburg
+                  {aboutStrings.academicTitle}
                 </h3>
                 <p className="text-muted leading-relaxed text-sm md:text-base">
-                  Pursuing Software Design International (EQR-Niveau 6) at Technischen Hochschule Aschaffenburg, Germany. Previously completed B.Tech in Computer Engineering coursework at Marwadi University, India.
+                  {aboutStrings.academicDesc}
                 </p>
                 <div className="flex flex-wrap gap-2 pt-2">
                   {["Software Design", "Spring Boot", "MySQL DBMS", "DevSecOps", "JavaFX", "Figma HCI"].map((course, i) => (
@@ -248,13 +255,13 @@ export default function About() {
             {activeTab === "hobbies" && (
               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="space-y-4">
                 <h3 className="text-xl font-bold font-display text-white">
-                  Hobbys und Interessen
+                  {aboutStrings.hobbiesTitle}
                 </h3>
                 <p className="text-muted leading-relaxed text-sm md:text-base">
-                  Outside of software design, I enjoy activities that foster continuous learning, teamwork, and active focus:
+                  {aboutStrings.hobbiesDesc}
                 </p>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-2">
-                  {HOBBIES.map((hobby) => (
+                  {hobbiesList.map((hobby) => (
                     <div key={hobby} className="px-4 py-3 rounded-2xl bg-white/5 border border-white/10 flex items-center space-x-2 text-xs font-mono text-white">
                       <Heart className="w-3.5 h-3.5 text-accent shrink-0" />
                       <span>{hobby}</span>
@@ -267,14 +274,13 @@ export default function About() {
 
           {/* Stats Grid */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <StatCounter value={PERSONAL_INFO.yearsExperience} label="Years Exp" icon={Code} />
-            <StatCounter value={PERSONAL_INFO.projectsCompleted} label="CV Projects" icon={Cpu} />
-            <StatCounter value={PERSONAL_INFO.technologiesMastered} label="Technologies" icon={Award} />
-            <StatCounter value={PERSONAL_INFO.githubContributions} label="GitHub Commits" icon={GitCommit} />
+            <StatCounter value={personalInfo.yearsExperience} label={aboutStrings.yearsExp} icon={Code} />
+            <StatCounter value={personalInfo.projectsCompleted} label={aboutStrings.cvProjects} icon={Cpu} />
+            <StatCounter value={personalInfo.technologiesMastered} label={aboutStrings.technologies} icon={Award} />
+            <StatCounter value={personalInfo.githubContributions} label={aboutStrings.commits} icon={GitCommit} />
           </div>
         </motion.div>
       </div>
     </section>
   );
 }
-

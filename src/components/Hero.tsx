@@ -13,7 +13,8 @@ import {
   GraduationCap,
   ChevronDown
 } from "lucide-react";
-import { PERSONAL_INFO, HERO_ROLES, FLOATING_BADGES } from "@/constants/portfolioData";
+import { PERSONAL_INFO, HERO_ROLES, FLOATING_BADGES, UI_STRINGS } from "@/constants/portfolioData";
+import { useLanguage } from "@/context/LanguageContext";
 
 // Dynamically load 3D Canvas with ssr: false to prevent SSG WebGL prerendering errors
 const Hero3D = dynamic(() => import("./Hero3D"), {
@@ -26,13 +27,18 @@ const Hero3D = dynamic(() => import("./Hero3D"), {
 });
 
 export default function Hero() {
+  const { language } = useLanguage();
+  const personalInfo = PERSONAL_INFO[language];
+  const heroRoles = HERO_ROLES[language];
+  const heroStrings = UI_STRINGS[language].hero;
+
   const [roleIndex, setRoleIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
   const [isDeleting, setIsDeleting] = useState(false);
 
   // Typewriter effect for roles
   useEffect(() => {
-    const currentRole = HERO_ROLES[roleIndex];
+    const currentRole = heroRoles[roleIndex % heroRoles.length];
     const typingSpeed = isDeleting ? 40 : 80;
 
     const timeout = setTimeout(() => {
@@ -45,13 +51,13 @@ export default function Hero() {
         setDisplayedText(currentRole.substring(0, displayedText.length - 1));
         if (displayedText.length === 0) {
           setIsDeleting(false);
-          setRoleIndex((prev) => (prev + 1) % HERO_ROLES.length);
+          setRoleIndex((prev) => (prev + 1) % heroRoles.length);
         }
       }
     }, typingSpeed);
 
     return () => clearTimeout(timeout);
-  }, [displayedText, isDeleting, roleIndex]);
+  }, [displayedText, isDeleting, roleIndex, heroRoles]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -90,7 +96,7 @@ export default function Hero() {
               <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
             </span>
             <span className="text-xs font-mono text-muted tracking-wider uppercase">
-              {PERSONAL_INFO.availability}
+              {personalInfo.availability}
             </span>
           </motion.div>
 
@@ -98,18 +104,18 @@ export default function Hero() {
           <div className="space-y-3">
             <motion.h2 variants={itemVariants} className="text-xl md:text-2xl font-mono text-accent font-medium tracking-tight flex items-center space-x-2">
               <Sparkles className="w-5 h-5 text-accent animate-pulse" />
-              <span>Hello, I&apos;m Aryan</span>
+              <span>{heroStrings.hello}</span>
             </motion.h2>
 
             <motion.h1 
               variants={itemVariants} 
               className="text-4xl sm:text-6xl xl:text-7xl font-bold font-display tracking-tight text-white leading-[1.1]"
             >
-              Architecting <br />
+              {heroStrings.headlinePart1} <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-accent">
-                High-Impact
+                {heroStrings.headlineHighlight}
               </span>{" "}
-              Systems.
+              {heroStrings.headlinePart2}
             </motion.h1>
 
             {/* Dynamic Typewriter Role */}
@@ -124,11 +130,11 @@ export default function Hero() {
 
           {/* Bio Description */}
           <motion.p variants={itemVariants} className="text-muted text-base md:text-lg leading-relaxed max-w-2xl font-sans">
-            {PERSONAL_INFO.tagline} Student at{" "}
+            {heroStrings.taglinePre}{" "}
             <span className="text-white font-medium underline decoration-accent/40 underline-offset-4">
-              {PERSONAL_INFO.university}
+              {personalInfo.university}
             </span>{" "}
-            specializing in robust microservices, graph algorithms, and responsive UI engineering.
+            {heroStrings.taglinePost}
           </motion.p>
 
           {/* CTA Buttons */}
@@ -139,7 +145,7 @@ export default function Hero() {
               data-cursor-text="PROJECTS"
               data-cursor-variant="project"
             >
-              <span>View Projects</span>
+              <span>{heroStrings.viewProjects}</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </a>
 
@@ -151,7 +157,7 @@ export default function Hero() {
               data-cursor-text="DOWNLOAD"
             >
               <FileText className="w-4 h-4 text-accent" />
-              <span>Download Resume</span>
+              <span>{heroStrings.downloadResume}</span>
             </a>
           </motion.div>
 
@@ -159,11 +165,11 @@ export default function Hero() {
           <motion.div variants={itemVariants} className="pt-6 border-t border-white/10 flex flex-wrap items-center gap-6 text-xs text-muted font-mono">
             <div className="flex items-center space-x-2">
               <MapPin className="w-4 h-4 text-accent" />
-              <span>{PERSONAL_INFO.location}</span>
+              <span>{personalInfo.location}</span>
             </div>
             <div className="flex items-center space-x-2">
               <GraduationCap className="w-4 h-4 text-secondary" />
-              <span>{PERSONAL_INFO.degree}</span>
+              <span>{personalInfo.degree}</span>
             </div>
             <div className="flex items-center space-x-2">
               <Code2 className="w-4 h-4 text-emerald-400" />
@@ -185,7 +191,6 @@ export default function Hero() {
           {/* Floating Technology Badges around Hero */}
           <div className="absolute inset-0 pointer-events-none hidden sm:block">
             {FLOATING_BADGES.map((badge, idx) => {
-              // Position badges radially around center
               const angles = [0, 45, 90, 135, 180, 225, 270, 315];
               const angle = (angles[idx] * Math.PI) / 180;
               const radius = 170;
@@ -235,7 +240,7 @@ export default function Hero() {
         }}
         className="absolute bottom-6 left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center space-y-2 text-xs font-mono text-muted"
       >
-        <span>SCROLL DOWN</span>
+        <span>{heroStrings.scrollDown}</span>
         <ChevronDown className="w-4 h-4 text-accent" />
       </motion.div>
     </section>
