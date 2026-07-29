@@ -10,23 +10,23 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#050505",
-        card: "#111111",
-        cardHover: "#161618",
+        background: "#0b0f19",
+        card: "#111827",
+        cardHover: "#1f2937",
         border: "rgba(255, 255, 255, 0.08)",
-        borderGlow: "rgba(59, 130, 246, 0.3)",
+        borderGlow: "rgba(56, 189, 248, 0.3)",
         accent: {
-          DEFAULT: "#3B82F6",
-          hover: "#2563EB",
-          glow: "rgba(59, 130, 246, 0.4)",
+          DEFAULT: "#38bdf8",
+          hover: "#0284c7",
+          glow: "rgba(56, 189, 248, 0.4)",
         },
         secondary: {
-          DEFAULT: "#8B5CF6",
-          hover: "#7C3AED",
-          glow: "rgba(139, 92, 246, 0.4)",
+          DEFAULT: "#6366f1",
+          hover: "#4f46e5",
+          glow: "rgba(99, 102, 241, 0.4)",
         },
-        muted: "#B5B5B5",
-        surface: "#0A0A0C",
+        muted: "#94a3b8",
+        surface: "#0f172a",
       },
       borderRadius: {
         '2xl': '24px',
@@ -69,8 +69,8 @@ const config: Config = {
       },
       boxShadow: {
         'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.37)',
-        'blue-glow': '0 0 25px rgba(59, 130, 246, 0.25)',
-        'purple-glow': '0 0 25px rgba(139, 92, 246, 0.25)',
+        'blue-glow': '0 0 25px rgba(56, 189, 248, 0.25)',
+        'purple-glow': '0 0 25px rgba(99, 102, 241, 0.25)',
       },
     },
   },

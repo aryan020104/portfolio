@@ -221,6 +221,23 @@ export const PROJECTS: Record<Language, Project[]> = {
         "Fokus auf Benutzerfreundlichkeit, modernes UI-Design und HCI-Prinzipien",
         "Erstellung responsiver Layouts und UI-Komponenten"
       ]
+    },
+    {
+      id: "ipadpro",
+      title: "iPad Pro Showcase",
+      subtitle: "HTML5 | CSS3 | Responsive Design",
+      category: "UI/UX & WebGL",
+      description: "Interaktives Webseiten-Showcase zur Präsentation des iPad Pro mit HTML5, CSS3 Grid Layouts und flüssigen UI-Animationen.",
+      longDescription: "Responsive Webseiten-Entwicklung zur Präsentation des iPad Pro. Implementierung von modernen CSS-Flexbox & Grid-Layouts, flüssigen Hover-Effekten und optimierter visueller Typografie.",
+      image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=1200&auto=format&fit=crop",
+      githubUrl: "https://github.com/aryan020104/iPadpro",
+      tags: ["HTML5", "CSS3", "Responsive Design", "UI Styling", "Animations"],
+      featured: true,
+      architectureHighlights: [
+        "Modernes CSS Flexbox & Grid responsive Layout-System",
+        "Flüssige CSS Keyframe Mikro-Animationen & Hover-Effekte",
+        "Cross-Browser Performance & visueller Produkt-Showcase"
+      ]
     }
   ],
   en: [
@@ -343,6 +360,23 @@ export const PROJECTS: Record<Language, Project[]> = {
         "Design of an interactive dashboard prototype with Figma",
         "Focus on usability, modern UI design, and HCI principles",
         "Creation of responsive layouts and reusable UI components"
+      ]
+    },
+    {
+      id: "ipadpro",
+      title: "iPad Pro Showcase",
+      subtitle: "HTML5 | CSS3 | Responsive Design",
+      category: "UI/UX & WebGL",
+      description: "Interactive website showcase cloning Apple's iPad Pro product page using HTML5, CSS3 Grid layouts, and fluid UI animations.",
+      longDescription: "Responsive web showcase designed to highlight iPad Pro product features. Implemented modern CSS Flexbox & Grid layouts, smooth hover transitions, and clean typography.",
+      image: "https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?q=80&w=1200&auto=format&fit=crop",
+      githubUrl: "https://github.com/aryan020104/iPadpro",
+      tags: ["HTML5", "CSS3", "Responsive Design", "UI Styling", "Animations"],
+      featured: true,
+      architectureHighlights: [
+        "Modern CSS Flexbox & Grid responsive layout system",
+        "Fluid CSS keyframe micro-animations & hover transitions",
+        "Cross-browser performance optimization & product showcase"
       ]
     }
   ]
@@ -669,9 +703,9 @@ export const GITHUB_STATS: Record<Language, {
     starsEarned: 45,
     repositories: [
       { name: "InternFlow", stars: 15, language: "Java / Spring Boot", desc: "Praktikumsverwaltungssystem REST-API mit MySQL & JWT" },
+      { name: "iPadpro", stars: 14, language: "HTML5 / CSS3", desc: "iPad Pro Webseiten-Showcase mit responsivem Design" },
       { name: "DroneNetOptimizer", stars: 12, language: "Java", desc: "Drohnennetzwerk-Optimierung mit Graphalgorithmen" },
-      { name: "OWASP-Juice-Shop-DevSecOps", stars: 18, language: "Docker / GitLab CI", desc: "CI/CD Pipeline mit Security Scanning" },
-      { name: "Budgetting-App", stars: 10, language: "Java / JavaFX", desc: "Desktop-Finanzverwaltungsanwendung" }
+      { name: "OWASP-Juice-Shop-DevSecOps", stars: 18, language: "Docker / GitLab CI", desc: "CI/CD Pipeline mit Security Scanning" }
     ]
   },
   en: {
@@ -681,9 +715,9 @@ export const GITHUB_STATS: Record<Language, {
     starsEarned: 45,
     repositories: [
       { name: "InternFlow", stars: 15, language: "Java / Spring Boot", desc: "Internship Management System REST API with MySQL & JWT" },
+      { name: "iPadpro", stars: 14, language: "HTML5 / CSS3", desc: "iPad Pro website showcase with responsive layout" },
       { name: "DroneNetOptimizer", stars: 12, language: "Java", desc: "Drone network optimization engine with graph algorithms" },
-      { name: "OWASP-Juice-Shop-DevSecOps", stars: 18, language: "Docker / GitLab CI", desc: "DevSecOps automated security scanning pipeline" },
-      { name: "Budgetting-App", stars: 10, language: "Java / JavaFX", desc: "Desktop personal financial manager application" }
+      { name: "OWASP-Juice-Shop-DevSecOps", stars: 18, language: "Docker / GitLab CI", desc: "DevSecOps automated security scanning pipeline" }
     ]
   }
 };

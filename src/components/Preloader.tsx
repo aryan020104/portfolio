@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface PreloaderProps {
@@ -10,26 +10,35 @@ interface PreloaderProps {
 export default function Preloader({ onComplete }: PreloaderProps) {
   const [progress, setProgress] = useState(0);
   const [isFinished, setIsFinished] = useState(false);
+  const onCompleteRef = useRef(onComplete);
+  
+  useEffect(() => {
+    onCompleteRef.current = onComplete;
+  }, [onComplete]);
 
   useEffect(() => {
+    let currentProgress = 0;
     const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval);
+      currentProgress += Math.floor(Math.random() * 15) + 12;
+      if (currentProgress >= 100) {
+        currentProgress = 100;
+        setProgress(100);
+        clearInterval(interval);
+        setTimeout(() => {
+          setIsFinished(true);
           setTimeout(() => {
-            setIsFinished(true);
-            setTimeout(onComplete, 800);
-          }, 400);
-          return 100;
-        }
-        // Random incremental step for realistic loader feel
-        const increment = Math.floor(Math.random() * 12) + 5;
-        return Math.min(prev + increment, 100);
-      });
-    }, 90);
+            if (onCompleteRef.current) {
+              onCompleteRef.current();
+            }
+          }, 500);
+        }, 300);
+      } else {
+        setProgress(currentProgress);
+      }
+    }, 50);
 
     return () => clearInterval(interval);
-  }, [onComplete]);
+  }, []);
 
   return (
     <AnimatePresence>

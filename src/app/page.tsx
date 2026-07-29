@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useLenis } from "@/hooks/useLenis";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { ThemeProvider } from "@/context/ThemeContext";
 import Preloader from "@/components/Preloader";
 import CustomCursor from "@/components/CustomCursor";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -25,30 +26,32 @@ export default function Home() {
   useLenis();
 
   return (
-    <LanguageProvider>
-      <main className="relative min-h-screen bg-[#050505] text-white overflow-hidden selection:bg-accent selection:text-white">
-        {/* Fullscreen Awwwards Preloader */}
-        {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
+    <ThemeProvider>
+      <LanguageProvider>
+        <main className="relative min-h-screen bg-[#050505] text-white overflow-hidden selection:bg-accent selection:text-white">
+          {/* Fullscreen Awwwards Preloader */}
+          {isLoading && <Preloader onComplete={() => setIsLoading(false)} />}
 
-        {/* Global Interactive Overlays */}
-        <CustomCursor />
-        <ScrollProgress />
-        <NoiseOverlay />
-        <BackgroundEffects />
+          {/* Global Interactive Overlays */}
+          <CustomCursor />
+          <ScrollProgress />
+          <NoiseOverlay />
+          <BackgroundEffects />
 
-        {/* Main Content Layout */}
-        <div className={`transition-opacity duration-1000 ${isLoading ? "opacity-0" : "opacity-100"}`}>
-          <Navbar />
-          <Hero />
-          <About />
-          <Skills />
-          <Projects />
-          <ExperienceEducation />
-          <CertificatesGithub />
-          <Contact />
-          <Footer />
-        </div>
-      </main>
-    </LanguageProvider>
+          {/* Main Content Layout */}
+          <div className={`transition-opacity duration-1000 ${isLoading ? "opacity-0" : "opacity-100"}`}>
+            <Navbar />
+            <Hero />
+            <About />
+            <Skills />
+            <Projects />
+            <ExperienceEducation />
+            <CertificatesGithub />
+            <Contact />
+            <Footer />
+          </div>
+        </main>
+      </LanguageProvider>
+    </ThemeProvider>
   );
 }

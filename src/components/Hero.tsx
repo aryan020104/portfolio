@@ -150,7 +150,7 @@ export default function Hero() {
             </a>
 
             <a
-              href="/resume.pdf"
+              href={language === "de" ? "/resume_de.pdf" : "/resume_en.pdf"}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center space-x-3 px-8 py-4 rounded-full bg-[#111111] border border-white/15 text-white font-semibold text-sm hover:border-white/40 hover:bg-white/5 transition-all duration-300 hover:scale-105 active:scale-95"

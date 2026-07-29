@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { 
   FileText, 
   Moon, 
+  Sun,
   Volume2, 
   VolumeX, 
   Menu, 
@@ -15,9 +16,11 @@ import {
 } from "lucide-react";
 import { PERSONAL_INFO, UI_STRINGS } from "@/constants/portfolioData";
 import { useLanguage } from "@/context/LanguageContext";
+import { useTheme } from "@/context/ThemeContext";
 
 export default function Navbar() {
   const { language, toggleLanguage, setLanguage } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -161,15 +164,21 @@ export default function Navbar() {
             )}
           </button>
 
-          <div
-            className="p-2.5 rounded-xl bg-[#111111] border border-white/10 text-accent/80 cursor-default opacity-80"
-            title="Dark Mode Locked"
+          <button
+            onClick={toggleTheme}
+            className="p-2.5 rounded-xl bg-[#111111] border border-white/10 text-muted hover:text-white hover:border-white/25 transition-all duration-300 hover:scale-105 active:scale-95"
+            title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            data-cursor-text="THEME"
           >
-            <Moon className="w-4 h-4" />
-          </div>
+            {theme === "dark" ? (
+              <Sun className="w-4 h-4 text-amber-400" />
+            ) : (
+              <Moon className="w-4 h-4 text-accent" />
+            )}
+          </button>
 
           <a
-            href="/resume.pdf"
+            href={language === "de" ? "/resume_de.pdf" : "/resume_en.pdf"}
             target="_blank"
             rel="noopener noreferrer"
             className="relative group inline-flex items-center space-x-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-accent to-secondary text-white text-xs font-mono font-semibold uppercase tracking-wider overflow-hidden shadow-lg shadow-accent/20 hover:shadow-accent/40 transition-all duration-300 hover:scale-105 active:scale-95"
@@ -177,7 +186,7 @@ export default function Navbar() {
           >
             <div className="absolute inset-0 bg-white/20 opacity-0 group-hover:opacity-100 transition-opacity" />
             <FileText className="w-4 h-4" />
-            <span>CV / Resume</span>
+            <span>{language === "de" ? "Lebenslauf" : "CV / Resume"}</span>
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
         </div>
@@ -250,13 +259,13 @@ export default function Navbar() {
               ))}
               <div className="pt-4 border-t border-white/10 flex items-center justify-between">
                 <a
-                  href="/resume.pdf"
+                  href={language === "de" ? "/resume_de.pdf" : "/resume_en.pdf"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-3 rounded-2xl bg-gradient-to-r from-accent to-secondary text-center text-white text-sm font-semibold flex items-center justify-center space-x-2 shadow-lg"
                 >
                   <FileText className="w-4 h-4" />
-                  <span>Download CV</span>
+                  <span>{language === "de" ? "Lebenslauf herunterladen" : "Download CV"}</span>
                 </a>
               </div>
             </div>
