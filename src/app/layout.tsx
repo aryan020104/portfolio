@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Syne, JetBrains_Mono } from "next/font/google";
+import { Inter, Syne, JetBrains_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
@@ -17,6 +17,12 @@ const syne = Syne({
 const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
   variable: "--font-jetbrains",
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-serif",
   display: "swap",
 });
 
@@ -64,7 +70,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <body
-        className={`${inter.variable} ${syne.variable} ${jetbrainsMono.variable} bg-[#050505] text-white antialiased selection:bg-accent selection:text-white`}
+        className={`${inter.variable} ${syne.variable} ${jetbrainsMono.variable} ${playfair.variable} bg-[#0a0908] text-[#fffbeb] antialiased selection:bg-amber-500 selection:text-black`}
       >
         {children}
       </body>

@@ -100,48 +100,47 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          {/* Heading with Line-by-Line Reveal */}
-          <div className="space-y-3">
-            <motion.h2 variants={itemVariants} className="text-xl md:text-2xl font-mono text-accent font-medium tracking-tight flex items-center space-x-2">
-              <Sparkles className="w-5 h-5 text-accent animate-pulse" />
+          {/* Heading with Serif Reveal matching reference screenshot */}
+          <div className="space-y-4">
+            <motion.h2 variants={itemVariants} className="text-xs md:text-sm font-mono text-amber-400/90 tracking-widest uppercase flex items-center space-x-2">
+              <Sparkles className="w-4 h-4 text-amber-400 animate-pulse" />
               <span>{heroStrings.hello}</span>
             </motion.h2>
 
             <motion.h1 
               variants={itemVariants} 
-              className="text-4xl sm:text-6xl xl:text-7xl font-bold font-display tracking-tight text-white leading-[1.1]"
+              className="text-5xl sm:text-7xl xl:text-8xl font-serif tracking-tight text-[#fffbeb] leading-[1.02]"
             >
-              {heroStrings.headlinePart1} <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-blue-200 to-accent">
-                {heroStrings.headlineHighlight}
-              </span>{" "}
-              {heroStrings.headlinePart2}
+              Aryan <br />
+              <span className="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-amber-200 via-amber-400 to-amber-500">
+                Sorathiya
+              </span>
             </motion.h1>
 
             {/* Dynamic Typewriter Role */}
-            <motion.div variants={itemVariants} className="h-12 flex items-center space-x-3 text-xl md:text-3xl font-mono font-semibold text-muted">
-              <Terminal className="w-6 h-6 text-secondary shrink-0" />
-              <span className="text-white">
+            <motion.div variants={itemVariants} className="h-10 flex items-center space-x-3 text-lg md:text-2xl font-mono text-amber-200/80">
+              <Terminal className="w-5 h-5 text-amber-400 shrink-0" />
+              <span>
                 {displayedText}
-                <span className="animate-pulse text-accent">|</span>
+                <span className="animate-pulse text-amber-400">|</span>
               </span>
             </motion.div>
           </div>
 
           {/* Bio Description */}
-          <motion.p variants={itemVariants} className="text-muted text-base md:text-lg leading-relaxed max-w-2xl font-sans">
+          <motion.p variants={itemVariants} className="text-stone-300 text-base md:text-lg leading-relaxed max-w-2xl font-sans">
             {heroStrings.taglinePre}{" "}
-            <span className="text-white font-medium underline decoration-accent/40 underline-offset-4">
+            <span className="text-amber-200 font-medium underline decoration-amber-500/40 underline-offset-4">
               {personalInfo.university}
             </span>{" "}
             {heroStrings.taglinePost}
           </motion.p>
 
-          {/* CTA Buttons */}
-          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 pt-2">
+          {/* Luxury iOS Pill Buttons matching Reference Screenshot */}
+          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 pt-3">
             <a
               href="#projects"
-              className="group relative inline-flex items-center space-x-3 px-8 py-4 rounded-full bg-gradient-to-r from-accent to-secondary text-white font-semibold text-sm shadow-xl shadow-accent/25 hover:shadow-accent/40 transition-all duration-300 hover:scale-105 active:scale-95"
+              className="group relative inline-flex items-center space-x-3 px-8 py-4 rounded-full bg-[#fffbeb] text-[#0a0908] font-bold text-sm shadow-xl shadow-amber-500/20 hover:shadow-amber-500/40 transition-all duration-300 hover:scale-105 active:scale-95"
               data-cursor-text="PROJECTS"
               data-cursor-variant="project"
             >
@@ -150,14 +149,21 @@ export default function Hero() {
             </a>
 
             <a
+              href="#contact"
+              className="inline-flex items-center space-x-3 px-8 py-4 rounded-full bg-[#0a0908]/80 border border-amber-500/40 text-amber-300 font-semibold text-sm hover:border-amber-400 hover:bg-amber-500/10 transition-all duration-300 hover:scale-105 active:scale-95"
+            >
+              <span>{language === "de" ? "Kontaktieren" : "Get in touch"}</span>
+            </a>
+
+            <a
               href={language === "de" ? "/resume_de.pdf" : "/resume_en.pdf"}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-3 px-8 py-4 rounded-full bg-[#111111] border border-white/15 text-white font-semibold text-sm hover:border-white/40 hover:bg-white/5 transition-all duration-300 hover:scale-105 active:scale-95"
-              data-cursor-text="DOWNLOAD"
+              className="inline-flex items-center space-x-3 px-7 py-4 rounded-full bg-[#141210] border border-stone-800 text-stone-300 font-medium text-sm hover:border-amber-500/30 hover:text-white transition-all duration-300 hover:scale-105 active:scale-95"
+              data-cursor-text="RESUME"
             >
-              <FileText className="w-4 h-4 text-accent" />
-              <span>{heroStrings.downloadResume}</span>
+              <FileText className="w-4 h-4 text-amber-400" />
+              <span>Résumé ↗</span>
             </a>
           </motion.div>
 
