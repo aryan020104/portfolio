@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader.js";
 
 export default function Hero3D() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -15,7 +15,7 @@ export default function Hero3D() {
     // 1. Scene Setup
     const scene = new THREE.Scene();
 
-    // 2. Camera Setup (Apple / Vercel Studio Perspective)
+    // 2. Camera Setup (Apple & Vercel Studio Perspective)
     const camera = new THREE.PerspectiveCamera(
       38,
       container.clientWidth / container.clientHeight,
@@ -47,10 +47,7 @@ export default function Hero3D() {
     const characterGroup = new THREE.Group();
     scene.add(characterGroup);
 
-    // Head reference for cursor looking interaction
     let headBone: THREE.Object3D | null = null;
-    let eyelidLeft: THREE.Mesh | null = null;
-    let eyelidRight: THREE.Mesh | null = null;
     let mixer: THREE.AnimationMixer | null = null;
 
     // 5. Soft Ground Shadow Plane (Bruno Simon Style Contact Shadows)
@@ -58,12 +55,12 @@ export default function Hero3D() {
     const shadowPlaneMat = new THREE.ShadowMaterial({ opacity: 0.28 });
     const shadowPlane = new THREE.Mesh(shadowPlaneGeo, shadowPlaneMat);
     shadowPlane.rotation.x = -Math.PI / 2;
-    shadowPlane.position.y = -1.8;
+    shadowPlane.position.y = -1.85;
     shadowPlane.receiveShadow = true;
     scene.add(shadowPlane);
 
     // 6. Cinematic 3-Point Studio Lighting
-    const ambientLight = new THREE.AmbientLight(0xfffbeb, 1.0);
+    const ambientLight = new THREE.AmbientLight(0xfffbeb, 1.1);
     scene.add(ambientLight);
 
     // Key Light (Main Directional Shadow Caster)
@@ -91,166 +88,29 @@ export default function Hero3D() {
     bounceLight.position.set(0, -3, 2);
     scene.add(bounceLight);
 
-    // 7. GLTFLoader Setup
-    const gltfLoader = new GLTFLoader();
+    // 7. Load User's Uploaded 3D Avatar Model (/model.fbx)
+    const loader = new FBXLoader();
 
-    // Helper to create procedural 3D Developer Avatar if GLB is loading or fallback
-    const createFallbackAvatar = () => {
-      const avatarGroup = new THREE.Group();
-
-      const skinMat = new THREE.MeshStandardMaterial({
-        color: 0xf5d0c5,
-        roughness: 0.4,
-        metalness: 0.05,
-      });
-
-      const suitMat = new THREE.MeshStandardMaterial({
-        color: 0x18181b,
-        roughness: 0.3,
-        metalness: 0.2,
-      });
-
-      const shirtMat = new THREE.MeshStandardMaterial({
-        color: 0xfffbeb,
-        roughness: 0.2,
-      });
-
-      const tieMat = new THREE.MeshStandardMaterial({
-        color: 0xd97706,
-        roughness: 0.2,
-        metalness: 0.3,
-      });
-
-      const beanieMat = new THREE.MeshStandardMaterial({
-        color: 0x27272a,
-        roughness: 0.8,
-      });
-
-      const glassMat = new THREE.MeshStandardMaterial({
-        color: 0xffffff,
-        roughness: 0.1,
-        metalness: 0.9,
-      });
-
-      // Torso in Executive Suit
-      const torsoGeo = new THREE.CylinderGeometry(0.55, 0.45, 1.4, 24);
-      const torso = new THREE.Mesh(torsoGeo, suitMat);
-      torso.position.y = -0.5;
-      torso.castShadow = true;
-      avatarGroup.add(torso);
-
-      // Shirt & Tie
-      const shirtGeo = new THREE.BoxGeometry(0.28, 0.5, 0.25);
-      const shirt = new THREE.Mesh(shirtGeo, shirtMat);
-      shirt.position.set(0, -0.2, 0.38);
-      avatarGroup.add(shirt);
-
-      const tieGeo = new THREE.BoxGeometry(0.08, 0.45, 0.04);
-      const tie = new THREE.Mesh(tieGeo, tieMat);
-      tie.position.set(0, -0.25, 0.52);
-      avatarGroup.add(tie);
-
-      // Head Group (for looking toward cursor)
-      const headGroup = new THREE.Group();
-      headGroup.position.set(0, 0.45, 0);
-
-      // Head Base
-      const headGeo = new THREE.SphereGeometry(0.42, 32, 32);
-      const headMesh = new THREE.Mesh(headGeo, skinMat);
-      headMesh.castShadow = true;
-      headGroup.add(headMesh);
-
-      // Beanie Cap
-      const beanieGeo = new THREE.SphereGeometry(0.44, 32, 16, 0, Math.PI * 2, 0, Math.PI * 0.55);
-      const beanie = new THREE.Mesh(beanieGeo, beanieMat);
-      beanie.position.y = 0.08;
-      beanie.castShadow = true;
-      headGroup.add(beanie);
-
-      // Round Glasses
-      const glassFrameGeo = new THREE.TorusGeometry(0.12, 0.02, 16, 32);
-      const glassL = new THREE.Mesh(glassFrameGeo, glassMat);
-      glassL.position.set(-0.16, 0.04, 0.38);
-      headGroup.add(glassL);
-
-      const glassR = new THREE.Mesh(glassFrameGeo, glassMat);
-      glassR.position.set(0.16, 0.04, 0.38);
-      headGroup.add(glassR);
-
-      const bridgeGeo = new THREE.CylinderGeometry(0.015, 0.015, 0.12, 8);
-      const bridge = new THREE.Mesh(bridgeGeo, glassMat);
-      bridge.rotation.z = Math.PI / 2;
-      bridge.position.set(0, 0.04, 0.38);
-      headGroup.add(bridge);
-
-      // Eyelids (for procedural blinking)
-      const eyelidGeo = new THREE.BoxGeometry(0.16, 0.08, 0.02);
-      const eyelidMat = new THREE.MeshBasicMaterial({ color: 0x3f3f46 });
-
-      const eyeL = new THREE.Mesh(eyelidGeo, eyelidMat);
-      eyeL.position.set(-0.16, 0.04, 0.39);
-      headGroup.add(eyeL);
-      eyelidLeft = eyeL;
-
-      const eyeR = new THREE.Mesh(eyelidGeo, eyelidMat);
-      eyeR.position.set(0.16, 0.04, 0.39);
-      headGroup.add(eyeR);
-      eyelidRight = eyeR;
-
-      // Ears
-      const earGeo = new THREE.SphereGeometry(0.08, 16, 16);
-      const earL = new THREE.Mesh(earGeo, skinMat);
-      earL.position.set(-0.43, 0.02, 0);
-      headGroup.add(earL);
-
-      const earR = new THREE.Mesh(earGeo, skinMat);
-      earR.position.set(0.43, 0.02, 0);
-      headGroup.add(earR);
-
-      // Arms (Standing Upright)
-      const armGeo = new THREE.CylinderGeometry(0.12, 0.1, 0.9, 16);
-      const armL = new THREE.Mesh(armGeo, suitMat);
-      armL.position.set(-0.62, -0.4, 0);
-      armL.rotation.z = 0.15;
-      armL.castShadow = true;
-      avatarGroup.add(armL);
-
-      const armR = new THREE.Mesh(armGeo, suitMat);
-      armR.position.set(0.62, -0.4, 0);
-      armR.rotation.z = -0.15;
-      armR.castShadow = true;
-      avatarGroup.add(armR);
-
-      avatarGroup.add(headGroup);
-      headBone = headGroup;
-
-      return avatarGroup;
-    };
-
-    // Load GLTF / GLB Avatar Model
-    let isGLBLoaded = false;
-
-    gltfLoader.load(
-      "/avatar.glb",
-      (gltf) => {
-        isGLBLoaded = true;
-        const model = gltf.scene;
-
-        // Auto-scale & Center GLTF Model
-        const box = new THREE.Box3().setFromObject(model);
+    loader.load(
+      "/model.fbx",
+      (fbx) => {
+        // Auto-scale & Center User's 3D Avatar Model
+        const box = new THREE.Box3().setFromObject(fbx);
         const size = box.getSize(new THREE.Vector3());
         const center = box.getCenter(new THREE.Vector3());
 
         const maxDim = Math.max(size.x, size.y, size.z);
         const targetScale = 3.6 / (maxDim || 1);
-        model.scale.set(targetScale, targetScale, targetScale);
+        fbx.scale.set(targetScale, targetScale, targetScale);
 
-        model.position.x = -center.x * targetScale;
-        model.position.y = -center.y * targetScale - 0.2;
-        model.position.z = -center.z * targetScale;
+        fbx.position.x = -center.x * targetScale;
+        fbx.position.y = -center.y * targetScale - 0.2;
+        fbx.position.z = -center.z * targetScale;
 
-        // Traverse mesh materials & shadow properties
-        model.traverse((child) => {
+        fbx.rotation.set(0, 0, 0);
+
+        // Traverse mesh materials for cinematic shading & shadows
+        fbx.traverse((child) => {
           if ((child as THREE.Mesh).isMesh) {
             const mesh = child as THREE.Mesh;
             mesh.castShadow = true;
@@ -261,7 +121,8 @@ export default function Hero3D() {
               mats.forEach((m) => {
                 if (m instanceof THREE.MeshStandardMaterial) {
                   m.envMapIntensity = 1.2;
-                  m.roughness = Math.max(m.roughness, 0.3);
+                  m.roughness = Math.max(m.roughness, 0.35);
+                  m.metalness = 0.15;
                 }
               });
             }
@@ -269,29 +130,25 @@ export default function Hero3D() {
 
           // Search for Head Bone joint for cursor tracking
           const name = child.name.toLowerCase();
-          if (name.includes("head") || name.includes("neck")) {
+          if (name.includes("head") || name.includes("neck") || name.includes("mixamorighead")) {
             headBone = child;
           }
         });
 
-        // Baked Animations Support
-        if (gltf.animations && gltf.animations.length > 0) {
-          mixer = new THREE.AnimationMixer(model);
-          const action = mixer.clipAction(gltf.animations[0]);
+        // Embedded Animation Support
+        if (fbx.animations && fbx.animations.length > 0) {
+          mixer = new THREE.AnimationMixer(fbx);
+          const action = mixer.clipAction(fbx.animations[0]);
           action.play();
         }
 
-        characterGroup.add(model);
+        characterGroup.add(fbx);
         setIsLoading(false);
       },
       undefined,
       (error) => {
-        // Fallback to high-quality 3D developer character mesh
-        if (!isGLBLoaded) {
-          const fallback = createFallbackAvatar();
-          characterGroup.add(fallback);
-          setIsLoading(false);
-        }
+        console.error("Error loading user 3D avatar model:", error);
+        setIsLoading(false);
       }
     );
 
@@ -313,7 +170,7 @@ export default function Hero3D() {
     const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
     scene.add(particlesMesh);
 
-    // 8. Interactive Mouse Tracking Target (Lerped looking towards cursor)
+    // 8. Interactive Mouse Tracking Target (Looking toward cursor)
     let mouseX = 0;
     let mouseY = 0;
     let targetX = 0;
@@ -348,10 +205,9 @@ export default function Hero3D() {
     );
     observer.observe(container);
 
-    // 11. Render Loop (Natural Breathing, Eye Blinking & Head Tracking)
+    // 11. Render Loop (Natural Breathing & Cursor Head Tracking)
     let animationFrameId: number;
     let lastTime = 0;
-    let blinkTimer = 0;
 
     const animate = (time: number) => {
       animationFrameId = requestAnimationFrame(animate);
@@ -361,7 +217,7 @@ export default function Hero3D() {
       if (time - lastTime < 14) return;
       lastTime = time;
 
-      // Update GLTF Animations Mixer
+      // Update Animation Mixer
       if (mixer) {
         mixer.update(delta);
       }
@@ -372,24 +228,10 @@ export default function Hero3D() {
       characterGroup.position.y = Math.sin(elapsedTime * 1.5) * 0.04;
       characterGroup.scale.setScalar(1 + Math.sin(elapsedTime * 1.5) * 0.004);
 
-      // B. Eye Blinking Loop (Blinks every 3.8s)
-      blinkTimer += delta;
-      if (blinkTimer > 3.8) {
-        const blinkProgress = Math.sin((blinkTimer - 3.8) * Math.PI * 8);
-        if (eyelidLeft && eyelidRight) {
-          const scaleY = Math.max(0.1, 1 - blinkProgress);
-          eyelidLeft.scale.y = scaleY;
-          eyelidRight.scale.y = scaleY;
-        }
-        if (blinkTimer > 4.1) {
-          blinkTimer = 0;
-        }
-      }
-
-      // C. Particle Drift
+      // B. Particle Drift
       particlesMesh.rotation.y = elapsedTime * 0.015;
 
-      // D. Smooth Head & Body Looking Toward Cursor
+      // C. Smooth Head & Body Looking Toward Cursor
       targetX += (mouseX - targetX) * 0.06;
       targetY += (mouseY - targetY) * 0.06;
 
