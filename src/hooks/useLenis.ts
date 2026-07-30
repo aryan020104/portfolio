@@ -18,6 +18,8 @@ export function useLenis() {
       touchMultiplier: 1.5,
     });
 
+    (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
+
     let rafId: number;
 
     function raf(time: number) {
@@ -29,6 +31,7 @@ export function useLenis() {
 
     return () => {
       cancelAnimationFrame(rafId);
+      delete (window as unknown as { __lenis?: Lenis }).__lenis;
       lenis.destroy();
     };
   }, []);
