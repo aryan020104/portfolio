@@ -194,12 +194,16 @@ export default function Hero3D() {
         rightArmBone = findBone(fbx, ["rightarm"]);
         rightForeArmBone = findBone(fbx, ["rightforearm"]);
 
-        [leftArmBone, leftForeArmBone, rightArmBone, rightForeArmBone, headBone].forEach(
-          (b) => {
-            if (b) bindQuats.set(b, b.quaternion.clone());
-          }
-        );
-
+        const bones: (THREE.Object3D | null)[] = [
+          leftArmBone,
+          leftForeArmBone,
+          rightArmBone,
+          rightForeArmBone,
+          headBone,
+        ];
+        bones.forEach((b) => {
+          if (b) bindQuats.set(b, b.quaternion.clone());
+        });
         const smile = findSmileMorph(fbx);
         smileMesh = smile.mesh;
         smileIndex = smile.index;
