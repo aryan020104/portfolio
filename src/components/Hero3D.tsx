@@ -220,7 +220,7 @@ export default function Hero3D() {
   return (
     <div
       ref={containerRef}
-      className="w-full h-[500px] lg:h-[650px] relative pointer-events-auto cursor-grab active:cursor-grabbing will-change-transform flex items-center justify-center"
+      className="w-full h-[360px] sm:h-[500px] lg:h-[650px] relative pointer-events-auto cursor-grab active:cursor-grabbing will-change-transform flex items-center justify-center touch-pan-y"
     />
   );
 }

@@ -196,21 +196,31 @@ export default function Navbar() {
           {/* Mobile Language Toggle */}
           <button
             onClick={toggleLanguage}
-            className="px-2.5 py-1.5 rounded-lg bg-[#111111] border border-white/15 text-xs font-mono font-bold text-accent"
+            className="px-2.5 py-1.5 rounded-lg bg-[#111111] border border-stone-300 dark:border-white/15 text-xs font-mono font-bold text-amber-600 dark:text-amber-400"
+            title="Language / Sprache"
           >
             {language.toUpperCase()}
           </button>
 
+          {/* Mobile Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-lg bg-[#111111] border border-stone-300 dark:border-white/10 text-stone-300 dark:text-muted"
+            title={theme === "dark" ? "Light Mode" : "Dark Mode"}
+          >
+            {theme === "dark" ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-amber-500" />}
+          </button>
+
           <button
             onClick={toggleSound}
-            className="p-2 rounded-lg bg-[#111111] border border-white/10 text-muted"
+            className="p-2 rounded-lg bg-[#111111] border border-stone-300 dark:border-white/10 text-stone-300 dark:text-muted"
           >
-            {soundEnabled ? <Volume2 className="w-4 h-4 text-accent" /> : <VolumeX className="w-4 h-4" />}
+            {soundEnabled ? <Volume2 className="w-4 h-4 text-amber-500" /> : <VolumeX className="w-4 h-4" />}
           </button>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2.5 rounded-xl bg-[#111111] border border-white/10 text-white"
+            className="p-2.5 rounded-xl bg-[#111111] border border-stone-300 dark:border-white/10 text-stone-900 dark:text-white"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>

@@ -139,10 +139,10 @@ export default function Hero() {
           </motion.p>
 
           {/* Luxury iOS Pill Buttons matching Reference Screenshot */}
-          <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 pt-3">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 pt-3">
             <a
               href="#projects"
-              className="group relative inline-flex items-center space-x-3 px-8 py-4 rounded-full bg-[#1c1917] text-[#fffbeb] dark:bg-[#fffbeb] dark:text-[#0a0908] font-bold text-sm shadow-xl shadow-amber-500/20 hover:shadow-amber-500/40 transition-all duration-300 hover:scale-105 active:scale-95"
+              className="group relative inline-flex items-center justify-center space-x-3 px-8 py-4 rounded-full bg-[#1c1917] text-[#fffbeb] dark:bg-[#fffbeb] dark:text-[#0a0908] font-bold text-sm shadow-xl shadow-amber-500/20 hover:shadow-amber-500/40 transition-all duration-300 hover:scale-105 active:scale-95"
               data-cursor-text="PROJECTS"
               data-cursor-variant="project"
             >
@@ -152,7 +152,7 @@ export default function Hero() {
 
             <a
               href="#contact"
-              className="inline-flex items-center space-x-3 px-8 py-4 rounded-full bg-white/80 dark:bg-[#0a0908]/80 border border-amber-500/40 text-amber-800 dark:text-amber-300 font-semibold text-sm hover:border-amber-500 hover:bg-amber-500/10 transition-all duration-300 hover:scale-105 active:scale-95 shadow-sm"
+              className="inline-flex items-center justify-center space-x-3 px-8 py-4 rounded-full bg-white/80 dark:bg-[#0a0908]/80 border border-amber-500/40 text-amber-800 dark:text-amber-300 font-semibold text-sm hover:border-amber-500 hover:bg-amber-500/10 transition-all duration-300 hover:scale-105 active:scale-95 shadow-sm"
             >
               <span>{language === "de" ? "Kontaktieren" : "Get in touch"}</span>
             </a>
@@ -161,7 +161,7 @@ export default function Hero() {
               href={language === "de" ? "/resume_de.pdf" : "/resume_en.pdf"}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center space-x-3 px-7 py-4 rounded-full bg-white dark:bg-[#141210] border border-stone-300 dark:border-stone-800 text-stone-700 dark:text-stone-300 font-medium text-sm hover:border-amber-500/40 hover:text-stone-900 dark:hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-sm"
+              className="inline-flex items-center justify-center space-x-3 px-7 py-4 rounded-full bg-white dark:bg-[#141210] border border-stone-300 dark:border-stone-800 text-stone-700 dark:text-stone-300 font-medium text-sm hover:border-amber-500/40 hover:text-stone-900 dark:hover:text-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-sm"
               data-cursor-text="RESUME"
             >
               <FileText className="w-4 h-4 text-amber-600 dark:text-amber-400" />
