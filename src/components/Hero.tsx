@@ -111,10 +111,10 @@ export default function Hero() {
 
             <motion.h1 
               variants={itemVariants} 
-              className="text-5xl sm:text-7xl xl:text-8xl font-serif tracking-tight text-[#1c1917] dark:text-[#fffbeb] leading-[1.02]"
+              className="text-5xl sm:text-7xl xl:text-8xl font-serif tracking-tight text-[#1c1917] dark:text-[#fffbeb] leading-[1.05]"
             >
               Aryan <br />
-              <span className="italic font-light text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-500 to-amber-400 dark:from-amber-200 dark:via-amber-400 dark:to-amber-500">
+              <span className="inline-block px-2 py-1 italic font-light text-transparent bg-clip-text bg-gradient-to-r from-amber-600 via-amber-500 to-amber-400 dark:from-amber-200 dark:via-amber-400 dark:to-amber-500">
                 Sorathiya
               </span>
             </motion.h1>
