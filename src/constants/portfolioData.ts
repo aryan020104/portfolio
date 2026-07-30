@@ -537,7 +537,7 @@ export const EDUCATION_LIST: Record<Language, {
     },
     {
       institution: "DELHI WORLD PUBLIC SCHOOL (DWPS)",
-      degree: "12th Grade [ Central Board of Secondary Education (CBSE) ]",
+      degree: "12th Grade (CBSE)",
       location: "Rajkot, Gujarat, Indien",
       period: "2022",
       specialization: "EQR-Niveau: 5 | Sekundarstufe II",
@@ -545,7 +545,7 @@ export const EDUCATION_LIST: Record<Language, {
     },
     {
       institution: "DELHI WORLD PUBLIC SCHOOL (DWPS)",
-      degree: "10th grade [ Central Board of Secondary Education (CBSE) ]",
+      degree: "10th Grade (CBSE)",
       location: "Rajkot, Gujarat, Indien",
       period: "2020",
       specialization: "EQR-Niveau: 3 | Sekundarstufe I",
@@ -571,7 +571,7 @@ export const EDUCATION_LIST: Record<Language, {
     },
     {
       institution: "DELHI WORLD PUBLIC SCHOOL (DWPS)",
-      degree: "12th Grade [ Central Board of Secondary Education (CBSE) ]",
+      degree: "12th Grade (CBSE)",
       location: "Rajkot, Gujarat, India",
       period: "2022",
       specialization: "EQR Level: 5 | Senior Secondary",
@@ -579,7 +579,7 @@ export const EDUCATION_LIST: Record<Language, {
     },
     {
       institution: "DELHI WORLD PUBLIC SCHOOL (DWPS)",
-      degree: "10th grade [ Central Board of Secondary Education (CBSE) ]",
+      degree: "10th Grade (CBSE)",
       location: "Rajkot, Gujarat, India",
       period: "2020",
       specialization: "EQR Level: 3 | Secondary Education",
@@ -919,8 +919,8 @@ export const UI_STRINGS: Record<Language, {
     },
     contact: {
       badge: "Kontakt",
-      headingPart1: "Treten Sie in Kontakt mit",
-      headingHighlight: "Aryan",
+      headingPart1: "Kontaktieren Sie",
+      headingHighlight: "mich",
       directInfo: "Direkte Informationen",
       directDesc: "Kontaktieren Sie mich gerne für Software Engineering Anfragen, Werksstudentenstellen oder technische Zusammenarbeit.",
       email: "E-Mail",

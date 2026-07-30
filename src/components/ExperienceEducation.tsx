@@ -114,23 +114,18 @@ export default function ExperienceEducation() {
               </div>
             </div>
 
-            <div className="space-y-3 font-mono text-xs text-stone-600 dark:text-muted border-t border-b border-stone-200 dark:border-white/10 py-4">
-              <div className="flex justify-between">
-                <span>{expStrings.degreeLabel}</span>
-                <span className="text-[#1c1917] dark:text-white font-semibold">{personalInfo.degree}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>{expStrings.locationLabel}</span>
-                <span className="text-[#1c1917] dark:text-white">{personalInfo.location}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>{expStrings.timelineLabel}</span>
-                <span className="text-amber-600 dark:text-amber-400 font-semibold">15.09.2024 - Present</span>
-              </div>
-              <div className="flex justify-between">
-                <span>{expStrings.nationalityLabel}</span>
-                <span className="text-emerald-600 dark:text-emerald-400 font-semibold">{personalInfo.nationality}</span>
-              </div>
+            <div className="grid grid-cols-12 gap-y-3 gap-x-2 font-mono text-xs text-stone-600 dark:text-muted border-t border-b border-stone-200 dark:border-white/10 py-4">
+              <div className="col-span-5 sm:col-span-4 text-stone-500 dark:text-stone-400 uppercase font-semibold flex items-center">{expStrings.degreeLabel}</div>
+              <div className="col-span-7 sm:col-span-8 text-right text-[#1c1917] dark:text-white font-semibold">{personalInfo.degree}</div>
+
+              <div className="col-span-5 sm:col-span-4 text-stone-500 dark:text-stone-400 uppercase font-semibold flex items-start">{expStrings.locationLabel}</div>
+              <div className="col-span-7 sm:col-span-8 text-right text-[#1c1917] dark:text-white leading-tight">{personalInfo.location}</div>
+
+              <div className="col-span-5 sm:col-span-4 text-stone-500 dark:text-stone-400 uppercase font-semibold flex items-center">{expStrings.timelineLabel}</div>
+              <div className="col-span-7 sm:col-span-8 text-right text-amber-600 dark:text-amber-400 font-semibold">15.09.2024 - Present</div>
+
+              <div className="col-span-5 sm:col-span-4 text-stone-500 dark:text-stone-400 uppercase font-semibold flex items-center">{expStrings.nationalityLabel}</div>
+              <div className="col-span-7 sm:col-span-8 text-right text-emerald-600 dark:text-emerald-400 font-semibold">{personalInfo.nationality}</div>
             </div>
 
             <div className="space-y-3">
